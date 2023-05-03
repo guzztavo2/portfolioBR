@@ -4,7 +4,7 @@
         <h1 class="tag">&lt;About-me&gt;</h1>
         <h1 class="tag">&lt;About-me/&gt;</h1>
         <div class="textWrapper flexRow">
-            <div class="w-50 flexColumn align-items-center">
+            <div class="w-50 flexColumn align-items-center fade-in-top">
                 <img src="@/assets/Imagens/profissional.png" class="fade-in-top img__wrapperUser" alt="">
                 <h1 class="boxVerde fade-in-top" style="margin-top:20px;">
                 </h1>
@@ -16,7 +16,7 @@
 
                 </h4>
             </div>
-            <div class="w-50">
+            <div class="w-50 fade-in-top">
                 <p class="boxVerde fade-in-top">
                 </p>
                 <div class="flexRow __formacoes boxVermelho fade-in-top">
@@ -55,36 +55,43 @@ import utils from "../utils"
         this.scrollEvent();
     }
 })
+// this.$props.escreverTextoHandle(elementsValues[cont].element, elementsValues[cont].value, false, true).then(() => {
+// element:HTMLElement, texto:string, removerCursor:boolean,
 export default class sobreSection extends Vue {
+    // eslint-disable-next-line
     escreverTextoHandle: any;
+    animateFinaly = false;
+
     scrollEvent() {
 
         const itemsAndEvents: { 'domElement': HTMLElement, 'texto': string }[] = [
             { domElement: (document.querySelector('h1.boxVerde') as HTMLElement), texto: 'Olá, eu sou o Gustavo, programador e desenvolvedor FullStack.' },
+            { domElement: (document.querySelector('div.w-50:nth-child(2) > p:nth-child(1)') as HTMLElement), texto: "Nasci em Miguelópolis, uma cidade do interior de São Paulo, e tenho 23 anos. Desde muito jovem, sempre me interessei por tecnologia. Para que você possa me conhecer um pouco melhor, gostaria de começar apresentando minhas formações: " },
+            { domElement: (document.querySelector('div.__formacoes:nth-child(2) > p:nth-child(3)') as HTMLElement), texto: " Com um ano e meio de estudo, pude ter minha primeira experiência com tecnologia e meu TCC foi desenvolvido utilizando o Adobe Flash. Criei uma aplicação que servia como um mapa da escola, já que o campus era combinado com uma área de estudos agrícolas. Optei por utilizar o software da Adobe porque era capaz de funcionar em diversos dispositivos disponíveis na época." },
+            { domElement: (document.querySelector('div.flexRow:nth-child(3) > p:nth-child(3)') as HTMLElement), texto: "Iniciei minha graduação em uma cidade vizinha chamada Barretos, também no estado de São Paulo, quando tinha 18 anos. Como morava em uma cidade do interior, precisava viajar diariamente para frequentar as aulas. Devido à pandemia, meu TCC foi uma experiência única, na qual utilizei duas inteligências artificiais da época que foram treinadas e testadas para uso como um possível teste de Covid-19, utilizando apenas uma foto do tórax em raio-X do paciente." },
             { domElement: (document.querySelector('div.w-50:nth-child(1) > h4:nth-child(3):not(b)') as HTMLElement), texto: '"O sucesso é a soma de pequenos esforços repetidos dia após dia" - Robert Collier' },
             { domElement: (document.querySelector('div.w-50:nth-child(1) > h4.boxVerde:nth-of-type(2)') as HTMLElement), texto: "Durante os meus 19 anos, enquanto concluía a minha graduação, trabalhei em uma empresa de açúcar e energia, embora esse trabalho não estivesse relacionado à área de Tecnologia. Permaneci na empresa até novembro de 2022, e graças a esse trabalho, tive a oportunidade de montar um setup para trabalhar em casa, com um novo computador e um notebook para trabalhar em mobilidade, caso seja necessário." },
             { domElement: (document.querySelector('div.w-50:nth-child(1) > h4.boxVerde:nth-of-type(3)') as HTMLElement), texto: "  Depois de me formar, fiz cursos de programação à distância, nos quais aprendi a trabalhar comtecnologias Front-End, incluindo HTML5, CSS3, JavaScript, VueJS, AngularJS e várias outras tecnologias. Depois de me aprofundar e estudar Front-End, comecei a estudar Back-End, e procurei me especializar emuma linguagem conhecida, optando por PHP, Laravel, Node, entre outras." },
-            { domElement: (document.querySelector('div.w-50:nth-child(2) > p:nth-child(1)') as HTMLElement), texto: "Nasci em Miguelópolis, uma cidade do interior de São Paulo, e tenho 23 anos. Desde muito jovem, sempre me interessei por tecnologia. Para que você possa me conhecer um pouco melhor, gostaria de começar apresentando minhas formações: " },
-            { domElement: (document.querySelector('div.__formacoes:nth-child(2) > p:nth-child(3)') as HTMLElement), texto: " Com um ano e meio de estudo, pude ter minha primeira experiência com tecnologia e meu TCC foi desenvolvido utilizando o Adobe Flash. Criei uma aplicação que servia como um mapa da escola, já que o campus era combinado com uma área de estudos agrícolas. Optei por utilizar o software da Adobe porque era capaz de funcionar em diversos dispositivos disponíveis na época." },
-            { domElement: (document.querySelector('div.flexRow:nth-child(3) > p:nth-child(3)') as HTMLElement), texto: "Iniciei minha graduação em uma cidade vizinha chamada Barretos, também no estado de São Paulo, quando tinha 18 anos. Como morava em uma cidade do interior, precisava viajar diariamente para frequentar as aulas. Devido à pandemia, meu TCC foi uma experiência única, na qual utilizei duas inteligências artificiais da época que foram treinadas e testadas para uso como um possível teste de Covid-19, utilizando apenas uma foto do tórax em raio-X do paciente.<br /> O TCC está disponível em um repositório do GitHub." }
+
         ];
-        console.log(itemsAndEvents.length);
+        itemsAndEvents.forEach((element) => {
+            element.domElement.classList.add('dNone');
+        })
+        var cont = 0;
+        const escreverTexto = (element: HTMLElement, texto: string, tempoCarregamento: number) => {
+            element.classList.remove('dNone');
+            return this.escreverTextoHandle(element, texto, true, false, tempoCarregamento);
 
-
-        window.addEventListener('scroll', () => {
-            var cont = 0;
-            while (cont < itemsAndEvents.length) {
-
-                console.log(utils.handleScroll(itemsAndEvents[cont].domElement));
-                if (utils.handleScroll(itemsAndEvents[cont].domElement) && itemsAndEvents[cont].domElement.innerText.length == 0) {
-                    console.log(itemsAndEvents[cont]);
+        }
+        window.addEventListener('scroll', async () => {
+            if (utils.handleScroll((document.querySelector('section.sobre') as HTMLElement)) && !this.animateFinaly) {
+                this.animateFinaly = true;
+                while (cont < itemsAndEvents.length) {
+                    await escreverTexto(itemsAndEvents[cont].domElement, itemsAndEvents[cont].texto, 15).then();
+                    cont++;
                 }
-
-                cont++;
-
             }
         });
-
     }
 }
 
@@ -94,6 +101,10 @@ export default class sobreSection extends Vue {
 </script>
 
 <style scoped>
+.dNone {
+    display: none;
+}
+
 section.sobre {
     width: 100%;
     position: relative;
