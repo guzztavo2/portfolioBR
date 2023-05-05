@@ -1,20 +1,22 @@
 <template>
     <section class="homePage">
         <div class="container">
-            <!-- <homeMain :deletarTexto="deletarTextoHandle" :escreverTexto="escreverTextoHandle"></homeMain> -->
-            <!-- <sobreSection :escreverTexto="escreverTextoHandle"></sobreSection> -->
-            <homeServicos></homeServicos>
+            <!-- <sectionMain :deletarTexto="deletarTextoHandle" :escreverTexto="escreverTextoHandle"></sectionMain> -->
+            <!-- <sectionSobre :escreverTexto="escreverTextoHandle"></sectionSobre> -->
+            <!-- <sectionServicos></sectionServicos> -->
+            <sectionContact></sectionContact>
         </div>
     </section>
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import homeMain from '@/HomePage/homeMainSection.vue';
-import sobreSection from '@/HomePage/homeSobreSection.vue';
-import homeServicos from '@/HomePage/homeServicosSection.vue';
+import sectionMain from '@/HomePage/homeMainSection.vue';
+import sectionSobre from '@/HomePage/homeSobreSection.vue';
+import sectionServicos from '@/HomePage/homeServicosSection.vue';
+import sectionContact from '@/HomePage/homeContactSection.vue';
 @Options({
     components: {
-        homeMain, sobreSection, homeServicos
+        sectionMain, sectionSobre, sectionServicos, sectionContact
     },
     props: {
         escreverTexto: {
@@ -30,16 +32,7 @@ import homeServicos from '@/HomePage/homeServicosSection.vue';
         this.escreverTextoHandle = this.$props.escreverTexto;
         this.deletarTextoHandle = this.$props.deletarTexto;
     },
-    // mounted(){
-    //     console.log(document.querySelector('section.servicos'));
-    //     document.querySelector('section.servicos')?.scrollIntoView({behavior:"smooth", block:"end", inline:"end"});
-    //     setTimeout(() => {
-    //         document.querySelector('section.servicos')?.scrollIntoView({behavior:"auto", block:"end", inline:"end"});
-    //         document.querySelector('section.servicos')?.scrollIntoView({behavior:"auto", block:"end", inline:"end"});
 
-    //     }, 500);
-
-    // }
 })
 export default class HomePage extends Vue {
     // eslint-disable-next-line

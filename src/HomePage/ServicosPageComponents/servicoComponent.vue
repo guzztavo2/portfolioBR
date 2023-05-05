@@ -137,7 +137,7 @@ import { Vue, Options } from 'vue-class-component';
 })
 export default class servicoComponent extends Vue {
     actualItemScroll = 0;
-    IntervalTimer!: number|undefined;
+    IntervalTimer!: number | undefined;
 
     intervalTimeSelector = (remove: boolean) => {
 
@@ -150,11 +150,11 @@ export default class servicoComponent extends Vue {
                 this.RemoveClassBallsElements(cont);
                 cont++;
             }, 2500);
-        } else if (remove){
+        } else if (remove) {
             clearInterval(this.IntervalTimer);
             this.IntervalTimer = undefined;
         }
-          
+
         return;
 
     }
@@ -210,21 +210,25 @@ export default class servicoComponent extends Vue {
             case 1:
                 this.RemoveAddClass(ballsElements[1], 'active', undefined);
 
-                this.setScrollViewHandle({ itemToSelectIndex: 4 });
+                this.setScrollViewHandle({ itemToSelectIndex: 3 });
                 break;
             case 2:
                 this.RemoveAddClass(ballsElements[2], 'active', undefined);
 
-                this.setScrollViewHandle({ itemToSelectIndex: 7 });
+                this.setScrollViewHandle({ itemToSelectIndex: 5 });
                 break;
         }
     }
     setScrollViewHandle(Select: { itemToSelectIndex: number } | undefined) {
         if (Select === undefined)
             return;
-        const elementItems = document.querySelectorAll('section.servicos div.item');
-        (elementItems[Select?.itemToSelectIndex] as HTMLElement).scrollIntoView({ behavior: "smooth", block: "center", inline: "center" })
+        const elementItem = (document.querySelectorAll('section.servicos div.item')[Select?.itemToSelectIndex] as HTMLElement);
+        const scrollOffset = window.innerWidth * 0.02;
 
+        if (elementItem.parentElement !== null)
+            elementItem.parentElement.scrollLeft = elementItem.offsetLeft - scrollOffset;
+
+        //(elementItem as HTMLElement).scrollIntoView({ block: "nearest", inline: "center" ,behavior: "smooth"  })
     }
 }
 </script>
@@ -237,9 +241,11 @@ div.wrapper__items {
     width: 100%;
     max-height: 25vw;
     padding: 1%;
-    overflow-x: hidden;
     flex-wrap: wrap;
     position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
 }
 
 div.item {
@@ -250,14 +256,14 @@ div.item {
     background-color: #FDFFFC;
     padding: 2%;
     box-shadow: 0 0 10px var(--corBranco), 0 0 10px var(--corBranco);
-    overflow: auto;
+    overflow-y: auto;
 
 }
 
 div.ballWrapper {
     width: 100%;
     max-height: 5vw;
-    padding: 1%;
+    padding: 2%;
     overflow: auto;
     flex-wrap: wrap;
 }
@@ -344,33 +350,63 @@ div.item div.wrapperIcon::after {
 
 @media (max-width:1500px) {
 
-    secti div.item div.item div.wrapperText a {
+    div.item div.item div.wrapperText a {
         font-size: 16px;
     }
 
-    secti div.wrapper__items {
+   
+
+    div.item div.wrapperText p[data-v-464817ec],
+    div.item div.wrapperText a {
+        font-size: 19px;
+    }
+
+    div.wrapper__items {
         max-height: 500px;
     }
 
-    secti div.item div.wrapperIcon i {
-        font-size: 80px;
+    div.item div.wrapperIcon i {
+        font-size: 100px;
     }
 
-    secti div.ballWrapper span {
+    div.ballWrapper span {
         display: block;
         border-radius: 100%;
         width: 40px;
         height: 80px;
     }
 
-    secti h1.title {
+    h1.title {
         font-size: 70px;
         text-shadow: 0px 0px 5px var(--corAmarelo), 0px 0px 3px var(--corAmarelo), 0px 0px 3px var(--corAmarelo);
 
     }
+    div.item div.wrapperIcon i {
+        font-size: 60px;
 
+    }
     h1.tag {
         font-size: 50px;
+
+    }
+    div.item.css div.wrapperIcon i,
+    div.item.vue div.wrapperIcon i,
+    div.item.github div.wrapperIcon i {
+        color: var(--corPreto);
+        text-shadow: 0 0 2px var(--corPreto), 0px 0px 2px var(--corPreto), 0px 0px 2px var(--corPreto);
+    }
+    div.item.js div.wrapperIcon i,
+    div.item.laravel div.wrapperIcon i,
+    div.item.bootstrap div.wrapperIcon i {
+        color: var(--corVerde);
+
+        text-shadow: 0 0 2px var(--corVerde), 0px 0px 2px var(--corVerde), 0px 0px 2px var(--corVerde);
+
+    }
+    div.item.php div.wrapperIcon i,
+    div.item.wordpress div.wrapperIcon i {
+        color: var(--corVermelho);
+        text-shadow: 0 0 2px var(--corVermelho), 0px 0px 2px var(--corVermelho), 0px 0px 2px var(--corVermelho);
 
     }
 }
@@ -396,6 +432,9 @@ div.item div.wrapperIcon::after {
 }
 
 @media(max-width:726px) {
+
+
+
     div.wrapper__items {
         max-height: 400px;
 

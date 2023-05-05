@@ -1,18 +1,55 @@
 <template>
-    <section class="servicos">
-    <servicoComponent></servicoComponent>
-        
+    <section id="services" class="servicos ">
+        <div class="container">
+            <h1 class="title">
+                SERVIÇOS
+            </h1>
+            <h1 class="tag">&lt;services&gt;</h1>
+            <h1 class="tag">&lt;services/&gt;</h1>
+            <div class="textWrapper flexRow ">
+                <h1 class="w-50 flexColumn align-items-center">
+                    <span class="icon"><i class="fa-solid fa-cube"></i></span>
+                    <span class="title">Desenvolvimento Front-End</span>
+                    Como um profissional de desenvolvimento front-end, é minha responsabilidade criar a interface do usuário
+                    de
+                    um projeto de software. A interface do usuário é tudo o que é visível e interativo para o usuário final.
+                    Meu
+                    objetivo é garantir que a aparência e a funcionalidade do aplicativo ou website sejam atraentes,
+                    intuitivas
+                    e fáceis de usar, incluindo a responsividade, que permite que o website seja acessível em qualquer
+                    dispositivo escolhido pelo cliente.
+
+                    Para desenvolver interfaces de usuário eficazes, utilizo tecnologias como HTML5, CSS, JavaScript e
+                    frameworks como o VueJS.
+                </h1>
+                <h1 class="w-50 flexColumn align-items-center">
+                    <span class="icon"><i class="fa-brands fa-perbyte"></i></span>
+                    <span class="title">Desenvolvimento Back-End</span>
+                    Como um profissional de desenvolvimento back-end, minha responsabilidade é garantir que os recursos e a
+                    lógica de um projeto de software estejam funcionando corretamente por trás da interface do usuário.
+                    Trabalho com tecnologias como PHP, MySQL, SQL, Asp.Net e Laravel para desenvolver soluções escaláveis e
+                    confiáveis que atendam às necessidades dos usuários finais.
+
+
+                </h1>
+            </div>
+            <h1 class="servicoComponent">Aqui estão algumas das tecnologias em que sou proficiente:</h1>
+        </div>
+        <servicoComponent></servicoComponent>
+        <h1 class="w-100 flexRow justify-content-center align-items-center button">
+           <a href="http://"> Entre em contato comigo agora!</a>
+        </h1>
     </section>
 </template>
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component';
 import servicoComponent from './ServicosPageComponents/servicoComponent.vue';
 @Options({
-    components:{
+    components: {
         servicoComponent
     },
 })
-export default class homeServicos extends Vue {
+export default class sectionServicos extends Vue {
 
 }
 </script>
@@ -22,6 +59,73 @@ section.servicos {
     position: relative;
     padding: 4% 0;
 }
+
+div.textWrapper {
+    margin: 3% 0;
+    border-radius: 5px;
+
+}
+
+.w-50 {
+    width: calc(50% - 2%);
+}
+
+div.textWrapper h1 {
+    font-weight: 300;
+    color: white;
+    font-size: 1.10vw;
+    padding: 1% 3%;
+    margin: 2% 2% 0 0;
+    word-wrap: break-word;
+    background-color: #e71d3585;
+    box-shadow: 0px 0px 10px #e71d3585, 0px 0px 10px #e71d3585;
+}
+
+div.textWrapper h1:nth-of-type(2) {
+    background-color: #2ec4b59f;
+    box-shadow: 0px 0px 10px #2ec4b59f, 0px 0px 10px #2ec4b59f;
+
+}
+
+h1.servicoComponent {
+    padding: 4% 2%;
+    color:white;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+h1.servicoComponent:hover::after{
+    width:100%;
+}
+h1.servicoComponent::after{
+    content: "";
+    display:block;
+    margin-top:2%;
+    background-color: white;
+    width: 2%;
+    height: 0.2vw;
+    transition: ease-in-out 0.5s;
+}
+div.textWrapper h1 span.icon {
+    text-align: center;
+    padding: 2%;
+    width: 80%;
+    display: block;
+    font-size: 10vw;
+    text-shadow: 0px 0px 10px black, 0px 0px 10px black;
+}
+
+div.textWrapper h1 span.title {
+
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 2vw;
+    text-align: center;
+    margin: 1% 0;
+    width: 100%;
+    text-shadow: 0px 0px 2px black, 0px 0px 2px black, 0px 0px 2px black, 0px 0px 2px black;
+
+}
+
 section.servicos h1.title {
     padding: 1%;
     font-size: 4vw;
@@ -34,6 +138,7 @@ section.servicos h1.title {
     text-transform: uppercase;
     text-shadow: 0px 0px 0.1vw var(--corAmarelo), 0px 0px 0.2vw var(--corAmarelo), 0px 0px 0.3vw var(--corAmarelo);
 }
+
 h1.tag {
     font-size: 3vw;
     text-transform: lowercase;
@@ -43,193 +148,76 @@ h1.tag {
     text-shadow: 0px 0px 0.1vw var(--corBranco), 0px 0px 0.2vw var(--corBranco), 0px 0px 0.5vw var(--corBranco);
     position: absolute;
 }
+
 h1.tag:nth-child(2) {
     top: 5%;
     right: 0;
 }
+
 h1.tag:nth-child(3) {
     bottom: 0;
     right: 0;
 }
-section.servicos div.container {
-    width: 100%;
-}
-section.servicos div.wrapper__items {
-    width: 100%;
-    max-height: 25vw;
-    padding: 1%;
-    overflow-x: hidden;
-    flex-wrap: wrap;
-    position: relative;
-}
-section.servicos div.item {
-    width: calc(100% / 3 - 5%);
-    height: 30vw;
-    margin-left: 3%;
-    margin-right: 3%;
-    background-color: #FDFFFC;
-    padding: 2%;
-    box-shadow: 0 0 10px var(--corBranco), 0 0 10px var(--corBranco);
-    overflow: auto;
+h1.button{
+    margin-top:4%;
 
 }
-section.servicos div.ballWrapper {
-    width: 100%;
-    max-height: 5vw;
-    padding: 1%;
-    overflow: auto;
-    flex-wrap: wrap;
-}
-section.servicos div.ballWrapper span {
-    display: block;
-    cursor: pointer;
-    border-radius: 100%;
-    width: calc(100% / 23);
-    height: 2.3vw;
-    background-color: var(--corAmarelo);
-    box-shadow: 0 0 15px #FF9F1C, 0 0 10px #FF9F1C, 0 0 5px #FF9F1C, 0 0 1px #FF9F1C;
-    z-index: 2;
-}
-section.servicos div.ballWrapper span.active {
-    background-color: var(--corVermelho);
-    box-shadow: 0 0 15px var(--corVermelho), 0 0 10px var(--corVermelho), 0 0 5px var(--corVermelho), 0 0 1px var(--corVermelho);
-    transition: ease-in-out 0.5s;
-}
-section.servicos div.item div.wrapperText {
-    margin-top: 4%;
-}
-section.servicos div.item div.wrapperText p,
-div.item div.wrapperText a {
-    font-size: 0.9vw;
-}
-section.servicos div.item div.wrapperText a {
+h1.button a{
+    width:80%;
+    background-color: #2ec4b593;
+
+    text-align: center;
     text-decoration: none;
-    background-color: #FF9F1C;
-    display: block;
-    text-align: center;
-    padding: 2%;
-    color: black;
-    margin-top: 2%;
-    font-weight: 700;
+    color:var(--corAmarelo);
     text-transform: uppercase;
-    border: 1px solid black;
+    text-shadow: 0px 0px 2px black, 0px 0px 2px black, 0px 0px 2px black ;
+    font-weight: 900;
+    padding:2%;
+    z-index: 5;
+    transition: ease-in-out 0.2s;
+    border-radius:2px;
+    outline: 4px solid white;
+    font-size: 1.4vw;
 }
-section.servicos div.item div.wrapperIcon {
-    padding: 1%;
-    text-align: center;
+h1.button a:hover{
+    background-color: var(--corVermelho);
 }
-section.servicos div.item div.wrapperIcon i {
-    font-size: 8vw;
-}
-section.servicos div.item.css div.wrapperIcon i,
-section.servicos div.item.vue div.wrapperIcon i,
-section.servicos div.item.github div.wrapperIcon i {
-    color: var(--corPreto);
-    text-shadow: 0 0 5px var(--corPreto), 0px 0px 2px var(--corPreto), 0px 0px 2px var(--corPreto);
-}
-section.servicos div.item.js div.wrapperIcon i,
-section.servicos div.item.laravel div.wrapperIcon i,
-section.servicos div.item.bootstrap div.wrapperIcon i {
-    color: var(--corVerde);
-
-    text-shadow: 0 0 5px var(--corVerde), 0px 0px 2px var(--corVerde), 0px 0px 2px var(--corVerde);
-
-}
-section.servicos div.item.php div.wrapperIcon i,
-section.servicos div.item.wordpress div.wrapperIcon i {
-    color: var(--corVermelho);
-    text-shadow: 0 0 5px var(--corVermelho), 0px 0px 2px var(--corVermelho), 0px 0px 2px var(--corVermelho);
-
-}
-
-section.servicos div.item div.wrapperIcon::after {
-    content: "";
-    margin-top: 10%;
-    background-color: black;
-    display: block;
-    width: 100%;
-    height: 2px;
-}
-
 @media (max-width:1500px) {
-
-    section.servicos div.item div.wrapperText p,
-    section.servicos div.item div.wrapperText a {
-        font-size: 16px;
-    }
-
-    section.servicos div.wrapper__items {
-        max-height: 500px;
-    }
-
-    section.servicos div.item div.wrapperIcon i {
-        font-size: 80px;
-    }
-
-    section.servicos div.ballWrapper span {
-        display: block;
-        border-radius: 100%;
-        width: 40px;
-        height: 80px;
-    }
-
-    section.servicos h1.title {
-        font-size: 70px;
-        text-shadow: 0px 0px 5px var(--corAmarelo), 0px 0px 3px var(--corAmarelo), 0px 0px 3px var(--corAmarelo);
-
-    }
-
-    h1.tag {
-        font-size: 50px;
-
-    }
+    h1.button a{
+    font-size: 20px;
 }
-
-@media (max-width:900px) {
-
-
-    section.servicos div.ballWrapper span {
-        display: block;
-        border-radius: 100%;
-        width: 40px;
-        height: 250px;
+    div.textWrapper h1 {
+        font-weight: 300;
+        color: white;
+        font-size: 25px;
     }
 
-    section.servicos div.ballWrapper {
-        max-height: 55px;
-    }
+    div.textWrapper h1 span.title[data-v-2fb4ee4a] {
 
-    section.servicos div.wrapper__items {
-        max-height: 450px;
+        font-size: 35px;
 
     }
+
+    div.textWrapper h1 span.icon[data-v-2fb4ee4a] {
+        width: 100%;
+        font-size: 130px;
+    }
+    section.servicos h1.title[data-v-2fb4ee4a] {
+	padding: 1%;
+	font-size: 60px;
+	text-shadow: 0px 0px 3px var(--corAmarelo), 0px 0px 5px var(--corAmarelo), 0px 0px 4px var(--corAmarelo);
 }
-
-@media(max-width:726px) {
-    section.servicos div.wrapper__items {
-        max-height: 400px;
-
-    }
+h1.tag[data-v-2fb4ee4a] {
+	font-size: 40px;
+	font-weight: 300;
+	text-shadow: 0px 0px 2px var(--corBranco), 0px 0px 2px var(--corBranco), 0px 0px 5px var(--corBranco);
+	position: absolute;
 }
-
-@media(max-width:646px) {
-    section.servicos div.wrapper__items {
-        max-height: 300px;
-
-    }
 }
-
-@media(max-width:485px) {
-    section.servicos div.wrapper__items {
-        max-height: 100px;
-
-    }
-
-    section.servicos div.ballWrapper span {
-        display: block;
-        border-radius: 100%;
-        width: 30px;
-        height: 30px;
-    }
+@media (max-width:700px) {
+    .w-50[data-v-2fb4ee4a] {
+	width: calc(100%);
+    margin-top:4%;
+}
 }
 </style>

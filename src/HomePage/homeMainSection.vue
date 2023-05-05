@@ -37,7 +37,7 @@ import { Vue, Options } from 'vue-class-component';
 
     }
 })
-export default class homeMain extends Vue {
+export default class sectionMain extends Vue {
     // eslint-disable-next-line 
     escreverTextoHandle: any;
     // eslint-disable-next-line 

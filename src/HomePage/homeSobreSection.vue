@@ -41,7 +41,6 @@
 </template>
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component';
-import utils from "../utils"
 
 @Options({
     props: {
@@ -52,17 +51,17 @@ import utils from "../utils"
     },
     mounted() {
         this.escreverTextoHandle = this.escreverTexto;
-        this.scrollEvent();
+        this.writeEvent();
     }
 })
 // this.$props.escreverTextoHandle(elementsValues[cont].element, elementsValues[cont].value, false, true).then(() => {
 // element:HTMLElement, texto:string, removerCursor:boolean,
-export default class sobreSection extends Vue {
+export default class sectionSobre extends Vue {
     // eslint-disable-next-line
     escreverTextoHandle: any;
     animateFinaly = false;
 
-    scrollEvent() {
+    writeEvent() {
 
         const itemsAndEvents: { 'domElement': HTMLElement, 'texto': string }[] = [
             { domElement: (document.querySelector('h1.boxVerde') as HTMLElement), texto: 'Olá, eu sou o Gustavo, programador e desenvolvedor FullStack.' },
@@ -83,15 +82,14 @@ export default class sobreSection extends Vue {
             return this.escreverTextoHandle(element, texto, true, false, tempoCarregamento);
 
         }
-        window.addEventListener('scroll', async () => {
-            if (utils.handleScroll((document.querySelector('section.sobre') as HTMLElement)) && !this.animateFinaly) {
-                this.animateFinaly = true;
-                while (cont < itemsAndEvents.length) {
-                    await escreverTexto(itemsAndEvents[cont].domElement, itemsAndEvents[cont].texto, 15).then();
-                    cont++;
-                }
-            }
-        });
+
+        this.animateFinaly = true;
+        while (cont < itemsAndEvents.length) {
+           escreverTexto(itemsAndEvents[cont].domElement, itemsAndEvents[cont].texto, 15).then();
+            cont++;
+        }
+
+
     }
 }
 

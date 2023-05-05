@@ -1,6 +1,6 @@
 <template >
   <LoadingVue :escreverTextoHandle="escreverTexto" v-if="isLoading == true" @finish-loading="FinishLoading"></LoadingVue>
-  <!-- <HeaderApp v-if="isLoading == false"></HeaderApp> -->
+  <HeaderApp v-if="isLoading == false"></HeaderApp>
   <HomePage :deletarTexto="deletarTexto" :escreverTexto="escreverTexto" v-if="isLoading == false"></HomePage>
 </template>
 
@@ -18,7 +18,7 @@ import HomePage from './components/HomePage.vue';
 
 })
 export default class App extends Vue {
-  isLoading = false;
+  isLoading = true;
   FinishLoading() {
     this.isLoading = false;
   }

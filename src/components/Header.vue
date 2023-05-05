@@ -37,9 +37,11 @@ import { Options, Vue } from 'vue-class-component';
 
             }
         })
-        window.addEventListener('resize', () => {
-            this.showMobileList();
-        })
+        // window.addEventListener('resize', () => {
+        //     alert('a');
+
+        //     this.showMobileList();
+        // })
 
     },
 
@@ -71,7 +73,7 @@ export default class HeaderApp extends Vue {
     }
     showMobileList() {
         const listElement = document.querySelector('ul');
-
+        
         listElement?.setAttribute('style', 'display:flex');
         listElement?.classList.remove('fade-out');
         listElement?.classList.add('fade-in');
