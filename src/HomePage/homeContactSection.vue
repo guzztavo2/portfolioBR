@@ -8,7 +8,7 @@
             <h1 class="tag">&lt;contact&gt;</h1>
             <h1 class="tag">&lt;contact/&gt;</h1>
 
-            <div class="flexRow align-items-center justify-content-center">
+            <div class="flexRow justify-content-center">
                 <div class="w-100">
                     <h1 class="subtitle">Caso haja interesse em estabelecer contato comigo ou contratar meus serviços,
                         sinta-se à vontade para utilizar o formulário de contato disponibilizado abaixo. Alternativamente, é
@@ -18,22 +18,12 @@
                     </h1>
                 </div>
                 <div class="w-50 wrapperFormulario">
-                    <form method="post" @submit.prevent="onSubmitFormContact">
-                        <h1 class="titleForm">Preencha o formulário, e envie-o, isso cairá diretamente a mim e me comunicarei o máximo possível.</h1>
-                        <label for="nomeUsuario">
-                            <input type="text" name="nomeUsuario" id="nomeUsuario">
-                        </label>
-                        <label for="emailUsuario">
-                            <input type="email" name="" id="">
-                        </label>
-                        <label for="emailUsuario">
-                            <input type="text" name="" id="">
-                        </label>
-                        <input type="submit" value="Olá">
-                    </form>
-                </div>
-                <div class="w-50 wrapperFormulario">
+                <FormComponent>
 
+                </FormComponent>
+                </div>
+                <div class="w-50 wrapperMediaSocial">
+                    <mediaSocial></mediaSocial>
                 </div>
             </div>
 
@@ -45,12 +35,13 @@
 </template>
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component';
-@Options({})
+import FormComponent from './ContactComponents/formContact.vue';
+import mediaSocial from './ContactComponents/mediaSocials.vue';
+@Options({
+    components:{FormComponent, mediaSocial}
+})
 export default class sectionContact extends Vue {
-    onSubmitFormContact(event:Event){
-        
-        alert('a');
-    }
+ 
 }
 </script>
 <style scoped>
@@ -79,11 +70,7 @@ h1.subtitle {
 div.w-50{
     width:calc(100% / 2)
 }
-div.wrapperFormulario{
-    background-color: white;
 
-
-}
 
 section#contact h1.title {
     padding: 1%;
@@ -111,4 +98,9 @@ h1.tag {
 h1.tag:nth-child(2) {
     top: 5%;
     right: 0;
-}</style>
+}
+div.wrapperMediaSocial{
+    background-color: green;
+}
+
+</style>

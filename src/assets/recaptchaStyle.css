@@ -1,0 +1,35 @@
+/*
+ * vue-client-recaptcha
+ * Creator:parsajiravand
+ * Build simple recaptcha for vuejs without need server
+ * v1.1.1
+ * MIT License
+ */
+
+.vue_client_recaptcha {
+    display: flex;
+    justify-content: space-around;
+    margin:1%;
+    flex-direction: row
+}
+
+.vue_client_recaptcha_icon {
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius:10px;
+}
+
+.vue_client_recaptcha_icon:hover {
+    background-color: #ccc
+}
+
+.vue_client_recaptcha .captcha_canvas {
+    background: #eee;
+    padding: 10px 0;
+    border-radius:10px;
+
+}

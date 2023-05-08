@@ -43,7 +43,7 @@
 </template>
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component';
-import servicoComponent from './ServicosPageComponents/servicoComponent.vue';
+import servicoComponent from './ServicosComponents/servicoComponent.vue';
 @Options({
     components: {
         servicoComponent

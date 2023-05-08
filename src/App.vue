@@ -18,7 +18,7 @@ import HomePage from './components/HomePage.vue';
 
 })
 export default class App extends Vue {
-  isLoading = true;
+  isLoading = false;
   FinishLoading() {
     this.isLoading = false;
   }
