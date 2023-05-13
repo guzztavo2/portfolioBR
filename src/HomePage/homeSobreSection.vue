@@ -2,7 +2,7 @@
     <section class="sobre flexColumn">
         <h1 class="title">Sobre-mim</h1>
         <h1 class="tag">&lt;About-me&gt;</h1>
-        <h1 class="tag">&lt;About-me/&gt;</h1>
+        <h1 class="tag">&lt;/About-me&gt;</h1>
         <div class="textWrapper flexRow">
             <div class="w-50 flexColumn align-items-center fade-in-top">
                 <img src="@/assets/Imagens/profissional.png" class="fade-in-top img__wrapperUser" alt="">
@@ -121,6 +121,7 @@ section.sobre h1.title {
     text-transform: uppercase;
     text-shadow: 0px 0px 0.1vw var(--corAmarelo), 0px 0px 0.2vw var(--corAmarelo), 0px 0px 0.3vw var(--corAmarelo);
 }
+
 
 h1.tag {
     font-size: 3vw;
@@ -305,7 +306,7 @@ section.sobre img.img__wrapperUser {
 
     div.__formacoes p,
     h4 {
-        font-size: 16px;
+        font-size: 20px;
     }
 
     div.w-50:nth-child(2)>p[data-v-f794bdba]:nth-child(1) {
@@ -333,6 +334,18 @@ section.sobre img.img__wrapperUser {
         text-shadow: 0px 0px 4px black, 0px 0px 2px black, 0px 0px 2px black;
         color: white;
     }
+    section.sobre h1.title {
+        padding: 1%;
+        font-size: 70px;
+        text-shadow: 0px 0px 3px var(--corAmarelo), 0px 0px 5px var(--corAmarelo), 0px 0px 4px var(--corAmarelo);
+    }
+
+    h1.tag {
+        font-size: 40px;
+        font-weight: 300;
+        text-shadow: 0px 0px 2px var(--corBranco), 0px 0px 2px var(--corBranco), 0px 0px 5px var(--corBranco);
+        position: absolute;
+    }
 }
 
 @media(max-width:1350px) {
@@ -349,5 +362,14 @@ section.sobre img.img__wrapperUser {
     section.sobre img.img__wrapperUser {
         object-fit: contain;
     }
+}
+@media(max-width:600px){
+    section.sobre {
+    width: 100%;
+    position: relative;
+    padding-top:20%;
+ 
+    /* padding: 20% 0; */
+}
 }
 </style>

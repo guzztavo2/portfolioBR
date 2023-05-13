@@ -1,7 +1,7 @@
 <template >
-  <LoadingVue :escreverTextoHandle="escreverTexto" v-if="isLoading == true" @finish-loading="FinishLoading"></LoadingVue>
-  <HeaderApp v-if="isLoading == false"></HeaderApp>
-  <HomePage :deletarTexto="deletarTexto" :escreverTexto="escreverTexto" v-if="isLoading == false"></HomePage>
+  <LoadingVue :escreverTextoHandle="escreverTexto" v-if="isLoading" @finish-loading="FinishLoading"></LoadingVue>
+  <!-- <HeaderApp @header-click="headerClick" :headerTitle="headerTitle" v-if="!isLoading"></HeaderApp> -->
+  <HomePage :deletarTexto="deletarTexto" @atualizarHeaderTitle="setHeaderTitle" :headerTitle="headerTitle" :escreverTexto="escreverTexto" v-if="!isLoading"></HomePage>
 </template>
 
 <script lang="ts">
@@ -15,14 +15,20 @@ import HomePage from './components/HomePage.vue';
     HeaderApp,
     HomePage
   },
-
 })
 export default class App extends Vue {
+  
   isLoading = false;
+  headerTitle = '';
+  setHeaderTitle(header:string){
+    this.headerTitle = header;
+  }
   FinishLoading() {
     this.isLoading = false;
   }
-
+  headerClick(header:string){
+    this.headerTitle = header;
+  }
   escreverTexto(element: Element, text: string, removerCursoNoUltimo: boolean, elementCarregador: boolean, tempoFuncionamento?: number) {
     const cursor = '<span class="cursor">▎</span>';
     if (tempoFuncionamento == undefined) {
@@ -89,10 +95,6 @@ export default class App extends Vue {
     });
   }
 }
-
-
-
-
 </script>
 
 <style>

@@ -1,11 +1,11 @@
 <template>
     <section id="services" class="servicos ">
-        <div class="container">
+        <!-- <div class="container">
             <h1 class="title">
                 SERVIÇOS
             </h1>
             <h1 class="tag">&lt;services&gt;</h1>
-            <h1 class="tag">&lt;services/&gt;</h1>
+            <h1 class="tag">&lt;/services&gt;</h1>
             <div class="textWrapper flexRow ">
                 <h1 class="w-50 flexColumn align-items-center">
                     <span class="icon"><i class="fa-solid fa-cube"></i></span>
@@ -34,19 +34,21 @@
                 </h1>
             </div>
             <h1 class="servicoComponent">Aqui estão algumas das tecnologias em que sou proficiente:</h1>
-        </div>
-        <servicoComponent></servicoComponent>
+        </div> -->
+        <!-- <servicoComponent></servicoComponent> -->
+        <gitHubComp></gitHubComp>
         <h1 class="w-100 flexRow justify-content-center align-items-center button">
-           <a href="http://"> Entre em contato comigo agora!</a>
+            <a href="http://"> Entre em contato comigo agora!</a>
         </h1>
     </section>
 </template>
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component';
 import servicoComponent from './ServicosComponents/servicoComponent.vue';
+import gitHubComp from './ServicosComponents/githubComponent.vue';
 @Options({
     components: {
-        servicoComponent
+        servicoComponent, gitHubComp
     },
 })
 export default class sectionServicos extends Vue {
@@ -89,22 +91,25 @@ div.textWrapper h1:nth-of-type(2) {
 
 h1.servicoComponent {
     padding: 4% 2%;
-    color:white;
+    color: white;
     font-weight: 900;
     text-transform: uppercase;
 }
-h1.servicoComponent:hover::after{
-    width:100%;
+
+h1.servicoComponent:hover::after {
+    width: 100%;
 }
-h1.servicoComponent::after{
+
+h1.servicoComponent::after {
     content: "";
-    display:block;
-    margin-top:2%;
+    display: block;
+    margin-top: 2%;
     background-color: white;
     width: 2%;
     height: 0.2vw;
     transition: ease-in-out 0.5s;
 }
+
 div.textWrapper h1 span.icon {
     text-align: center;
     padding: 2%;
@@ -150,42 +155,47 @@ h1.tag {
 }
 
 h1.tag:nth-child(2) {
-    top: 5%;
-    right: 0;
+    top: 1%;
+    right: 2%;
 }
 
 h1.tag:nth-child(3) {
     bottom: 0;
     right: 0;
 }
-h1.button{
-    margin-top:4%;
+
+h1.button {
+    margin-top: 4%;
 
 }
-h1.button a{
-    width:80%;
+
+h1.button a {
+    width: 80%;
     background-color: #2ec4b593;
 
     text-align: center;
     text-decoration: none;
-    color:var(--corAmarelo);
+    color: var(--corAmarelo);
     text-transform: uppercase;
-    text-shadow: 0px 0px 2px black, 0px 0px 2px black, 0px 0px 2px black ;
+    text-shadow: 0px 0px 2px black, 0px 0px 2px black, 0px 0px 2px black;
     font-weight: 900;
-    padding:2%;
+    padding: 2%;
     z-index: 5;
     transition: ease-in-out 0.2s;
-    border-radius:2px;
+    border-radius: 2px;
     outline: 4px solid white;
     font-size: 1.4vw;
 }
-h1.button a:hover{
+
+h1.button a:hover {
     background-color: var(--corVermelho);
 }
+
 @media (max-width:1500px) {
-    h1.button a{
-    font-size: 20px;
-}
+    h1.button a {
+        font-size: 20px;
+    }
+
     div.textWrapper h1 {
         font-weight: 300;
         color: white;
@@ -198,26 +208,39 @@ h1.button a:hover{
 
     }
 
-    div.textWrapper h1 span.icon[data-v-2fb4ee4a] {
+    div.textWrapper h1 span.icon {
         width: 100%;
         font-size: 130px;
     }
-    section.servicos h1.title[data-v-2fb4ee4a] {
-	padding: 1%;
-	font-size: 60px;
-	text-shadow: 0px 0px 3px var(--corAmarelo), 0px 0px 5px var(--corAmarelo), 0px 0px 4px var(--corAmarelo);
+
+    section.servicos h1.title {
+        padding: 1%;
+        font-size: 60px;
+        text-shadow: 0px 0px 3px var(--corAmarelo), 0px 0px 5px var(--corAmarelo), 0px 0px 4px var(--corAmarelo);
+    }
+
+    h1.tag {
+        font-size: 40px;
+        font-weight: 300;
+        text-shadow: 0px 0px 2px var(--corBranco), 0px 0px 2px var(--corBranco), 0px 0px 5px var(--corBranco);
+        position: absolute;
+    }
 }
-h1.tag[data-v-2fb4ee4a] {
-	font-size: 40px;
-	font-weight: 300;
-	text-shadow: 0px 0px 2px var(--corBranco), 0px 0px 2px var(--corBranco), 0px 0px 5px var(--corBranco);
-	position: absolute;
-}
-}
+
 @media (max-width:700px) {
     .w-50[data-v-2fb4ee4a] {
-	width: calc(100%);
-    margin-top:4%;
+        width: calc(100%);
+        margin-top: 4%;
+    }
 }
+
+@media(max-width:600px) {
+    section.servicos {
+        width: 100%;
+        position: relative;
+        padding-top: 20%;
+        padding-bottom: 12%;
+        /* padding: 20% 0; */
+    }
 }
 </style>

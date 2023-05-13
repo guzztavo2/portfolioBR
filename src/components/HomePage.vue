@@ -1,10 +1,12 @@
 <template>
+    {{ }}
     <section class="homePage">
         <div class="container">
-            <!-- <sectionMain :deletarTexto="deletarTextoHandle" :escreverTexto="escreverTextoHandle"></sectionMain> -->
-            <!-- <sectionSobre :escreverTexto="escreverTextoHandle"></sectionSobre> -->
-            <!-- <sectionServicos></sectionServicos> -->
-            <sectionContact></sectionContact>
+
+            <!-- <sectionMain @wheel="elementScroll('home')" id="home" :deletarTexto="deletarTextoHandle" :escreverTexto="escreverTextoHandle"></sectionMain> -->
+            <!-- <sectionSobre @wheel="elementScroll('sobre')" id="sobre" :escreverTexto="escreverTextoHandle"></sectionSobre> -->
+            <sectionServicos @wheel="elementScroll('servicos')" id="servicos"></sectionServicos>
+            <sectionContact @wheel="elementScroll('contato')" id="contato"></sectionContact>
         </div>
     </section>
 </template>
@@ -14,6 +16,7 @@ import sectionMain from '@/HomePage/homeMainSection.vue';
 import sectionSobre from '@/HomePage/homeSobreSection.vue';
 import sectionServicos from '@/HomePage/homeServicosSection.vue';
 import sectionContact from '@/HomePage/homeContactSection.vue';
+import { PropType } from 'vue';
 @Options({
     components: {
         sectionMain, sectionSobre, sectionServicos, sectionContact
@@ -23,23 +26,40 @@ import sectionContact from '@/HomePage/homeContactSection.vue';
             type: Function,
             required: true
         },
-        deletarTexto:{
-            type:Function,
-            required:true
+        headerTitle: {
+            type: String as PropType<string>,
+            required: true
+        },
+        deletarTexto: {
+            type: Function,
+            required: true
+        },
+    },
+    watch: {
+        headerTitle: function () {
+            document.getElementById(this.$props.headerTitle)?.scrollIntoView({ behavior: 'smooth', block: 'start', inline:'start' })
+            console.log(document.getElementById(this.$props.headerTitle))
         }
     },
     created() {
+        // this.headerTitle = this.headerTitle1;
         this.escreverTextoHandle = this.$props.escreverTexto;
         this.deletarTextoHandle = this.$props.deletarTexto;
     },
-
+    emits: ['atualizarHeaderTitle']
 })
 export default class HomePage extends Vue {
+    elementScroll(element: string) {
+        this.$emit('atualizarHeaderTitle', element)
+    }
     // eslint-disable-next-line
     escreverTextoHandle: any;
-        // eslint-disable-next-line
-    deletarTextoHandle:any;
-    
+    // eslint-disable-next-line
+    deletarTextoHandle: any;
+    lidarComEventoPersonalizado(headerTitle: string) {
+        alert(headerTitle);
+    }
+
 }
 
 </script>

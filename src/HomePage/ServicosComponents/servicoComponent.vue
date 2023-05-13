@@ -354,7 +354,10 @@ div.item div.wrapperIcon::after {
         font-size: 16px;
     }
 
-   
+    div.item div.wrapperText p,
+    div.item div.wrapperText a {
+        font-size: 16px;
+    }
 
     div.item div.wrapperText p[data-v-464817ec],
     div.item div.wrapperText a {
@@ -375,18 +378,8 @@ div.item div.wrapperIcon::after {
         width: 40px;
         height: 80px;
     }
-
-    h1.title {
-        font-size: 70px;
-        text-shadow: 0px 0px 5px var(--corAmarelo), 0px 0px 3px var(--corAmarelo), 0px 0px 3px var(--corAmarelo);
-
-    }
     div.item div.wrapperIcon i {
         font-size: 60px;
-
-    }
-    h1.tag {
-        font-size: 50px;
 
     }
     div.item.css div.wrapperIcon i,
@@ -395,6 +388,7 @@ div.item div.wrapperIcon::after {
         color: var(--corPreto);
         text-shadow: 0 0 2px var(--corPreto), 0px 0px 2px var(--corPreto), 0px 0px 2px var(--corPreto);
     }
+
     div.item.js div.wrapperIcon i,
     div.item.laravel div.wrapperIcon i,
     div.item.bootstrap div.wrapperIcon i {
@@ -403,6 +397,7 @@ div.item div.wrapperIcon::after {
         text-shadow: 0 0 2px var(--corVerde), 0px 0px 2px var(--corVerde), 0px 0px 2px var(--corVerde);
 
     }
+
     div.item.php div.wrapperIcon i,
     div.item.wordpress div.wrapperIcon i {
         color: var(--corVermelho);
@@ -417,17 +412,20 @@ div.item div.wrapperIcon::after {
     div.ballWrapper span {
         display: block;
         border-radius: 100%;
-        width: 40px;
-        height: 250px;
+        width: 50px;
     }
 
     div.ballWrapper {
-        max-height: 55px;
+        max-height: 80px;
     }
 
     div.wrapper__items {
         max-height: 450px;
 
+    }
+    div.item div.wrapperIcon i {
+        font-size: 85px;
+        
     }
 }
 
@@ -437,7 +435,14 @@ div.item div.wrapperIcon::after {
 
     div.wrapper__items {
         max-height: 400px;
+    }
 
+    div.item {
+        height: 50vw;
+        overflow-x:hidden;
+    }
+    div.ballWrapper {
+        max-height: 65px;
     }
 }
 

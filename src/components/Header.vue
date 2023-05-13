@@ -1,21 +1,49 @@
 <template>
-    <section class="fade-in flexRow align-items-center">
+    <section class="fade-in flexRow align-items-center header">
         <h1>LOGO</h1>
         <div id="mobileIcon" @click="mobileListEvent">
             <i class="fa-solid fa-bars"></i>
         </div>
         <ul class="flexRow align-items-center">
-            <li>&lt;home/&gt;</li>
-            <li>&lt;serviços/&gt;</li>
-            <li>&lt;sobre/&gt;</li>
-            <li>&lt;contato/&gt;</li>
+            <li @click="headerClick('home')">&lt;home/&gt;</li>
+            <li @click="headerClick('sobre')">&lt;sobre/&gt;</li>
+            <li @click="headerClick('servicos')">&lt;serviços/&gt;</li>
+            <li @click="headerClick('contato')">&lt;contato/&gt;</li>
         </ul>
     </section>
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 @Options({
+    emits: [
+        'header-click'
+    ],
+    props: {
+        headerTitle: {
+            type: String,
+            require: true
+        }
+    },
+    watch: {
+        headerTitle: function () {
+            this.headerTitle1 = this.$props.headerTitle;
+            console.log(this.headerTitle);
+            switch (this.headerTitle) {
+                case 'home':
+                
+                    break;
+                case 'sobre':
 
+                    break;
+                case 'servicos':
+
+                    break;
+                case 'contato':
+
+                    break;
+            }
+        }
+    },
     mounted() {
         setTimeout(function () {
             document.querySelector('section')?.classList.remove('fade-in');
@@ -37,55 +65,59 @@ import { Options, Vue } from 'vue-class-component';
 
             }
         })
-        // window.addEventListener('resize', () => {
-        //     alert('a');
 
-        //     this.showMobileList();
-        // })
 
     },
 
 })
 export default class HeaderApp extends Vue {
     mobileVisible = false;
-    mobileHiddenAfterTime = (listElement: HTMLElement, disabledTimeOut: boolean) => {
-
-        var timeOut = setTimeout(() => {
-            this.hiddenMobileList((listElement as HTMLElement));
-            this.mobileVisible = false;
-        }, 6000);
-        if (disabledTimeOut)
-            clearTimeout(timeOut);
-        return;
-
+    headerTitle1 = '';
+    headerClick(headerTitle: string) {
+        this.$emit('header-click', headerTitle);
+        this.headerTitle1 = headerTitle;
     }
     mobileListEvent() {
-        const listElement = document.querySelector('ul');
+        const elementUl = (document.querySelector('ul') as HTMLElement);
         if (this.mobileVisible) {
             this.mobileVisible = false;
-            this.hiddenMobileList((listElement as HTMLElement));
+            this.hiddenMobileList((elementUl as HTMLElement));
 
         }
         else {
             this.showMobileList();
             this.mobileVisible = true;
+            window.addEventListener('click', (event: Event) => {
+                const listChildren = elementUl?.querySelectorAll('li');
+                if (listChildren == null || listChildren == undefined)
+                    return;
+
+                console.log(event.target);
+                for (const item of listChildren) {
+                    if (item == event.target || event.target == document.querySelector('.fa-solid.fa-bars')) {
+                        return;
+                    }
+
+                }
+                this.hiddenMobileList(elementUl);
+
+            })
         }
     }
     showMobileList() {
         const listElement = document.querySelector('ul');
-        
+
         listElement?.setAttribute('style', 'display:flex');
         listElement?.classList.remove('fade-out');
         listElement?.classList.add('fade-in');
 
-        this.mobileHiddenAfterTime((listElement as HTMLElement), true);
     }
     hiddenMobileList(listElement: HTMLElement) {
         listElement?.classList.remove('fade-in');
         listElement?.classList.add('fade-out');
         setTimeout(() => {
             listElement?.removeAttribute('style');
-        }, 500);
+        }, 300);
     }
 }
 
@@ -234,6 +266,7 @@ ul li:hover {
         height: 100%;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
     }
 
     #mobileIcon i {
