@@ -228,10 +228,10 @@ div.logo img {
         font-size: 20px;
     }
 
-    ul[data-v-61dd7a3d] {
+    ul {
         min-width: 55%;
     }
-    div.logo[data-v-61dd7a3d]{
+    div.logo{
         height:150px;
     }
 }

@@ -202,7 +202,7 @@ h1.button a:hover {
         font-size: 25px;
     }
 
-    div.textWrapper h1 span.title[data-v-2fb4ee4a] {
+    div.textWrapper h1 span.title {
 
         font-size: 35px;
 
@@ -228,7 +228,7 @@ h1.button a:hover {
 }
 
 @media (max-width:700px) {
-    .w-50[data-v-2fb4ee4a] {
+    .w-50 {
         width: calc(100%);
         margin-top: 4%;
     }

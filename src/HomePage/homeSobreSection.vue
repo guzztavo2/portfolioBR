@@ -266,7 +266,7 @@ section.sobre img.img__wrapperUser {
 
     }
 
-    div.w-50:nth-child(2)>p[data-v-f794bdba]:nth-child(1) {
+    div.w-50:nth-child(2)>p:nth-child(1) {
         font-size: 20px;
         line-height: 150%;
         padding: 2%;
@@ -309,7 +309,7 @@ section.sobre img.img__wrapperUser {
         font-size: 20px;
     }
 
-    div.w-50:nth-child(2)>p[data-v-f794bdba]:nth-child(1) {
+    div.w-50:nth-child(2)>p:nth-child(1) {
         padding: 2%;
         text-align: center;
     }
