@@ -95,13 +95,13 @@ export default class HeaderApp extends Vue {
     mobileListEvent() {
         const elementUl = (document.querySelector('ul') as HTMLElement);
         if (this.mobileVisible) {
-            this.mobileVisible = false;
-            this.hiddenMobileList((elementUl as HTMLElement));
+            this.toggleMobileClass((elementUl as HTMLElement));
 
         }
         else {
             this.showMobileList();
             this.mobileVisible = true;
+           
             window.addEventListener('click', (event: Event) => {
                 const listChildren = elementUl?.querySelectorAll('li');
                 if (listChildren == null || listChildren == undefined)
@@ -113,12 +113,13 @@ export default class HeaderApp extends Vue {
                     }
 
                 }
-                this.hiddenMobileList(elementUl);
+                this.toggleMobileClass(elementUl);
 
             })
         }
     }
     showMobileList() {
+        
         const listElement = document.querySelector('ul');
 
         listElement?.setAttribute('style', 'display:flex');
@@ -126,7 +127,8 @@ export default class HeaderApp extends Vue {
         listElement?.classList.add('fade-in');
 
     }
-    hiddenMobileList(listElement: HTMLElement) {
+    toggleMobileClass(listElement: HTMLElement) {
+        this.mobileVisible = false;
         listElement?.classList.remove('fade-in');
         listElement?.classList.add('fade-out');
         setTimeout(() => {
