@@ -37,9 +37,6 @@
         </div>
         <servicoComponent></servicoComponent>
         <gitHubComp></gitHubComp>
-        <h1 class="w-100 flexRow justify-content-center align-items-center button">
-            <a href="http://"> Entre em contato comigo agora!</a>
-        </h1>
     </section>
 </template>
 <script lang="ts">

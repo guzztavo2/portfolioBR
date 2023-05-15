@@ -254,11 +254,8 @@ export default class FormComponent extends Vue {
                         result.removeAttribute(n.attribute);
                     else
                         result.setAttribute(n.attribute, n.value);
-
                 }
-
-            })
-
+            });
         }
 
         xhr.onloadstart = function () {
@@ -268,8 +265,6 @@ export default class FormComponent extends Vue {
 
             if (this.readyState == 4 && this.status == 200) {
                 setInput([{ attribute: "disabled", value: 'true' }, { attribute: "style", value: 'opacity:70%' }], true);
-                alert('a');
-                setInput([{ attribute: "disabled", value: 'true' }, { attribute: "style", value: 'opacity:70%' }]);
                 modalView('Tudo certo, mensagem enviada com sucesso!', 'Entrarei em contato o mais breve possível, mediante as informações que você me passou! Obrigado e tenha um bom dia!');
                 redefinedSubmit.captchaObject.visibleCaptcha = false;
                 redefinedSubmit.formSubmitView = false;
@@ -295,7 +290,6 @@ export default class FormComponent extends Vue {
     }
     verificarNomeUsuario() {
         var userInput = this.userInput.nomeUsuario;
-
         if (userInput.length > 0 && !/^[A-Z ]$/.test(userInput[userInput.length - 1].toLocaleUpperCase())) {
             this.userInput.nomeUsuario = userInput.replace(userInput[userInput.length - 1], '')
             this.verificarNomeUsuario();
