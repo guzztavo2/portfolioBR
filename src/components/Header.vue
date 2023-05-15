@@ -156,7 +156,7 @@ section {
     box-shadow: 0px 0px 0.5vw var(--corBranco);
     justify-content: space-between;
     color: var(--corPreto);
-    opacity: 75%;
+    opacity: 70%;
     position: relative;
     z-index: 99;
     transition: ease-in-out opacity 0.5s;

@@ -7,9 +7,9 @@
                 </div>
                 <div class="w-100 links__wrapper">
                     <ul>
-                        <li><a class="container" @click="headerUpdate('contato')">Contato</a></li>
-                        <li><a class="container" @click="headerUpdate('servicos')" >Servicos</a></li>
-                        <li><a class="container" @click="headerUpdate('sobre')" >Sobre</a></li>
+                        <li><a class="container" @click="headerUpdate('contato')">Contato <i class="fa-solid fa-phone-volume"></i></a></li>
+                        <li><a class="container" @click="headerUpdate('servicos')" >Servicos <i class="fa-solid fa-computer"></i></a></li>
+                        <li><a class="container" @click="headerUpdate('sobre')" >Sobre <i class="fa-solid fa-address-card"></i></a></li>
                     </ul>
                 </div>
                 <div class="w-100">
@@ -72,7 +72,7 @@ ul li a {
     color: var(--corBranco);
     display: block;
     text-align: right;
-    padding: 2%;
+    padding: 0.5%;
     border: 2px solid white;
     font-weight: 900;
     text-transform: lowercase;
