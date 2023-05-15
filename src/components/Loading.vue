@@ -13,7 +13,7 @@
         <h3 class="apresentation_1"></h3>
         <h3 class="apresentation_2"></h3>
         <h3 class="apresentation_3"></h3>
-        <button v-if="loadEnd" @click="removeLoadingPage">Pular Introdução <i class="fa-brands fa-github"></i></button>
+        <button v-if="loadEnd" @click="removeLoadingPage">Pular Introdução <i class="fa-solid fa-right-to-bracket"></i></button>
     </section>
 </template>
 <script lang="ts">

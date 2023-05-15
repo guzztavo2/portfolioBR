@@ -41,7 +41,7 @@ import Footer from './components/Footer.vue';
 })
 export default class App extends Vue {
 
-  isLoading = false;
+  isLoading = true;
   headerTitle = '';
 
   setHeaderTitle(header: string) {
