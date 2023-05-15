@@ -46,7 +46,7 @@ h1{
 
 }
 div.textWrapper{
-    padding:2%;
+    padding:1%;
     background-color: var(--corVerde);
     border:2px solid white;
     margin: 1%;

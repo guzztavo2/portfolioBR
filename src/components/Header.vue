@@ -234,6 +234,10 @@ div.logo img {
     div.logo{
         height:150px;
     }
+    section{
+        box-shadow: 0px 0px 10px var(--corBranco), 0px 0px 10px var(--corBranco), 0px 0px 10px var(--corBranco);
+
+    }
 }
 
 @media (max-width:990px) {
