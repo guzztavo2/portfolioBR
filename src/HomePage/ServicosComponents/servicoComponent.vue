@@ -378,10 +378,12 @@ div.item div.wrapperIcon::after {
         width: 40px;
         height: 80px;
     }
+
     div.item div.wrapperIcon i {
         font-size: 60px;
 
     }
+
     div.item.css div.wrapperIcon i,
     div.item.vue div.wrapperIcon i,
     div.item.github div.wrapperIcon i {
@@ -423,9 +425,10 @@ div.item div.wrapperIcon::after {
         max-height: 450px;
 
     }
+
     div.item div.wrapperIcon i {
         font-size: 85px;
-        
+
     }
 }
 
@@ -439,8 +442,9 @@ div.item div.wrapperIcon::after {
 
     div.item {
         height: 50vw;
-        overflow-x:hidden;
+        overflow-x: hidden;
     }
+
     div.ballWrapper {
         max-height: 65px;
     }

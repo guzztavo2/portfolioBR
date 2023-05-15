@@ -1,3 +1,9 @@
+<!-- 
+ - Enquanto o request do formulário carregar, desativar todos os inputs!
+ - Após a conclusão do request do formulário, sistema de tempo!
+
+ -->
+
 <template>
     <div v-if="modalObject.visible" class="modalWrapper flexRow justify-content-center align-items-center">
         <div id="modal" class="modal flexColumn align-items-center">
@@ -79,14 +85,19 @@ import "@/assets/recaptchaStyle.css";
             inputValue,
         };
     },
-    mounted() {
-        // this.onSubmitFormContact();
-    }
 })
 export default class FormComponent extends Vue {
+    inputSelector(selector: string) {
+        return document.querySelector(selector);
+    }
     userInput = { nomeUsuario: '', emailUsuario: '', mensagemUsuario: '', numeroUsuario: '' };
+    input = {
+        nomeUsuario: () => { return this.inputSelector('#nomeUsuario') },
+        emailUsuario: () => { return this.inputSelector('#emailUsuario') },
+        numeroUsuario: () => { return this.inputSelector('#numeroUsuario') },
+        mensagemUsuario: () => { return this.inputSelector('#mensagemUsuario') }
+    }
     userError = { nomeUsuario: '', numeroUsuario: '', emailUsuario: '', mensagemUsuario: '', submitError: '' };
-
     captchaObject = { captchaValue: '', captchaError: '', visibleCaptcha: false, captchFinalizado: false }
     modalObject = { visible: false, titleMessage: '', message: '' }
     formSubmitView = true;
@@ -194,10 +205,8 @@ export default class FormComponent extends Vue {
         if (this.userInput.numeroUsuario.length > 0) {
             if (/([(]\d{2}[)]\d{4}[-]\d{4})/g.test(this.userInput.numeroUsuario))
                 this.userError.numeroUsuario = '';
-
             else if (/([(]\d{2}[)]\d{5}[-]\d{4})/g.test(this.userInput.numeroUsuario))
                 this.userError.numeroUsuario = '';
-
             else
                 this.userError.numeroUsuario = 'Número de celular inválido! Por favor, tente novamente!';
 
@@ -221,7 +230,6 @@ export default class FormComponent extends Vue {
 
     onSubmitFormContact() {
         this.verificarFinalizacao();
-        console.log(this.captchaObject);
         if (this.captchaObject.captchFinalizado == false) {
             this.setModalView('Ops, esqueceu de responder o Captcha ❌', 'Responda o captcha e após isso clique novamente em enviar!');
             return;
@@ -230,16 +238,38 @@ export default class FormComponent extends Vue {
         this.submitRequest();
     }
     private submitRequest() {
+
         const xhr = new XMLHttpRequest();
         const modalView = this.setModalView;
         const userInput = { userInput: this.userInput, numeroUsuario: this.userInput.numeroUsuario };
         const redefinedSubmit = { captchaObject: this.captchaObject, formSubmitView: this.formSubmitView }
+
+        const setInput = (listElements: { attribute: string, value: string }[], removeAtributes = false) => {
+            const elements = Object.values(this.input);
+            // eslint-disable-next-line
+            elements.forEach((item: any) => {
+                const result = (item() as HTMLElement);
+                for (const n of listElements) {
+                    if (removeAtributes)
+                        result.removeAttribute(n.attribute);
+                    else
+                        result.setAttribute(n.attribute, n.value);
+
+                }
+
+            })
+
+        }
+
         xhr.onloadstart = function () {
-            console.log('Iniciou o carregamento!')
+            setInput([{ attribute: "disabled", value: 'true' }, { attribute: "style", value: 'opacity:70%' }]);
         }
         xhr.onreadystatechange = function () {
 
             if (this.readyState == 4 && this.status == 200) {
+                setInput([{ attribute: "disabled", value: 'true' }, { attribute: "style", value: 'opacity:70%' }], true);
+                alert('a');
+                setInput([{ attribute: "disabled", value: 'true' }, { attribute: "style", value: 'opacity:70%' }]);
                 modalView('Tudo certo, mensagem enviada com sucesso!', 'Entrarei em contato o mais breve possível, mediante as informações que você me passou! Obrigado e tenha um bom dia!');
                 redefinedSubmit.captchaObject.visibleCaptcha = false;
                 redefinedSubmit.formSubmitView = false;

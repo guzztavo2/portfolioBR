@@ -85,7 +85,7 @@ export default class sectionSobre extends Vue {
 
         this.animateFinaly = true;
         while (cont < itemsAndEvents.length) {
-           escreverTexto(itemsAndEvents[cont].domElement, itemsAndEvents[cont].texto, 15).then();
+            escreverTexto(itemsAndEvents[cont].domElement, itemsAndEvents[cont].texto, 15).then();
             cont++;
         }
 
@@ -334,6 +334,7 @@ section.sobre img.img__wrapperUser {
         text-shadow: 0px 0px 4px black, 0px 0px 2px black, 0px 0px 2px black;
         color: white;
     }
+
     section.sobre h1.title {
         padding: 1%;
         font-size: 70px;
@@ -363,13 +364,14 @@ section.sobre img.img__wrapperUser {
         object-fit: contain;
     }
 }
-@media(max-width:600px){
+
+@media(max-width:600px) {
     section.sobre {
-    width: 100%;
-    position: relative;
-    padding-top:20%;
- 
-    /* padding: 20% 0; */
-}
+        width: 100%;
+        position: relative;
+        padding-top: 20%;
+
+        /* padding: 20% 0; */
+    }
 }
 </style>

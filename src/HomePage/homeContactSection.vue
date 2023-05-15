@@ -45,6 +45,7 @@ section#contato {
     position: relative;
     padding: 10% 0;
 }
+
 section#contato h1.title {
     padding: 1%;
     font-size: 4vw;
@@ -57,6 +58,7 @@ section#contato h1.title {
     text-transform: uppercase;
     text-shadow: 0px 0px 0.1vw var(--corAmarelo), 0px 0px 0.2vw var(--corAmarelo), 0px 0px 0.3vw var(--corAmarelo);
 }
+
 h1 {
     font-size: 1.4vw;
 
@@ -94,38 +96,42 @@ h1.tag:nth-child(2) {
     top: 5%;
     right: 0;
 }
-h1.tag:nth-child(3){
+
+h1.tag:nth-child(3) {
     right: 0;
     bottom: 0;
 }
 
 @media (max-width:1500px) {
     h1 {
-    font-size: 23px;
+        font-size: 23px;
+
+    }
+
+
+    h1.tag {
+        font-weight: 300;
+        position: absolute;
+    }
+
+    section#contact h1.title {
+        font-size: 60px;
+        text-shadow: 0px 0px 3px var(--corAmarelo), 0px 0px 5px var(--corAmarelo), 0px 0px 4px var(--corAmarelo);
+    }
+
+    h1.tag {
+        font-size: 40px;
+        text-shadow: 0px 0px 2px var(--corBranco), 0px 0px 2px var(--corBranco), 0px 0px 5px var(--corBranco);
+    }
 
 }
 
-
-h1.tag {
-	font-weight: 300;
-	position: absolute;
-}
-section#contact h1.title {
-	font-size: 60px;
-	text-shadow: 0px 0px 3px var(--corAmarelo), 0px 0px 5px var(--corAmarelo), 0px 0px 4px var(--corAmarelo);
-}
-
-h1.tag {
-	font-size: 40px;
-	text-shadow: 0px 0px 2px var(--corBranco), 0px 0px 2px var(--corBranco), 0px 0px 5px var(--corBranco);
-}
-
-}
 @media (max-width: 650px) {
     div.w-50 {
-    width: calc(100% / 1)
+        width: calc(100% / 1)
+    }
 }
-}
+
 @media(max-width:600px) {
     section#contact {
         width: 100%;
@@ -133,5 +139,4 @@ h1.tag {
         padding-top: 25%;
         padding-bottom: 15%;
     }
-}
-</style>
+}</style>

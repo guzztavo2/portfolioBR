@@ -257,4 +257,5 @@ button:hover {
     h3 {
         max-width: 80%;
     }
-}</style>
+}
+</style>

@@ -1,14 +1,16 @@
 <template>
     <section class="fade-in flexRow align-items-center header">
-        <h1>LOGO</h1>
+        <div class="logo">
+            <img src="@/assets/Imagens/Logo.png" alt="" srcset="">
+        </div>
         <div id="mobileIcon" @click="mobileListEvent">
             <i class="fa-solid fa-bars"></i>
         </div>
         <ul class="flexRow align-items-center">
-            <li @click="headerClick('home')">&lt;home/&gt;</li>
-            <li @click="headerClick('sobre')">&lt;sobre/&gt;</li>
-            <li @click="headerClick('servicos')">&lt;serviços/&gt;</li>
-            <li @click="headerClick('contato')">&lt;contato/&gt;</li>
+            <li id="home" class="active" @click="headerClick('home')">&lt;home/&gt;</li>
+            <li id="sobre" @click="headerClick('sobre')">&lt;sobre/&gt;</li>
+            <li id="servicos" @click="headerClick('servicos')">&lt;serviços/&gt;</li>
+            <li id="contato" @click="headerClick('contato')">&lt;contato/&gt;</li>
         </ul>
     </section>
 </template>
@@ -19,26 +21,39 @@ import { Options, Vue } from 'vue-class-component';
         'header-click'
     ],
     props: {
-        headerTitle: {
-            type: String,
-            require: true
+        headerTitle:{
+            type:String,
+            require:true
         }
     },
     watch: {
         headerTitle: function () {
-            this.headerTitle1 = this.$props.headerTitle;
-            console.log(this.headerTitle);
-            switch (this.headerTitle) {
+            const headerTitle = this.$props.headerTitle;
+
+            const toggleClass = (currentElement: string) => {
+                const listOfElements = document.querySelectorAll('ul li');
+                listOfElements.forEach(element => {
+                    if (element.id == currentElement) {
+                        element.classList.add('active');
+                    } else {
+                        element.classList.remove('active');
+                    }
+                });
+            }
+            switch (headerTitle) {
                 case 'home':
-                
+                    toggleClass('home');
                     break;
                 case 'sobre':
+                    toggleClass('sobre');
 
                     break;
                 case 'servicos':
+                    toggleClass('servicos');
 
                     break;
                 case 'contato':
+                    toggleClass('contato');
 
                     break;
             }
@@ -92,7 +107,6 @@ export default class HeaderApp extends Vue {
                 if (listChildren == null || listChildren == undefined)
                     return;
 
-                console.log(event.target);
                 for (const item of listChildren) {
                     if (item == event.target || event.target == document.querySelector('.fa-solid.fa-bars')) {
                         return;
@@ -142,7 +156,7 @@ section {
     box-shadow: 0px 0px 0.5vw var(--corBranco);
     justify-content: space-between;
     color: var(--corPreto);
-    opacity: 80%;
+    opacity: 75%;
     position: relative;
     z-index: 99;
     transition: ease-in-out opacity 0.5s;
@@ -192,6 +206,23 @@ ul li:hover {
 
 }
 
+ul li.active {
+    color: var(--corVermelho);
+    text-shadow: 0px 0px 0.1vw var(--corVermelho), 0px 0px 0.1vw var(--corVermelho);
+    transition: ease-in-out 0.2s;
+}
+
+div.logo {
+    width: 30%;
+    height: 9vw;
+}
+
+div.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 @media (max-width:1500px) {
     ul li {
         font-size: 20px;
@@ -200,7 +231,9 @@ ul li:hover {
     ul[data-v-61dd7a3d] {
         min-width: 55%;
     }
-
+    div.logo[data-v-61dd7a3d]{
+        height:150px;
+    }
 }
 
 @media (max-width:990px) {

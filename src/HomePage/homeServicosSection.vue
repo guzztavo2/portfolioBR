@@ -1,6 +1,6 @@
 <template>
     <section id="services" class="servicos ">
-        <!-- <div class="container">
+        <div class="container">
             <h1 class="title">
                 SERVIÇOS
             </h1>
@@ -34,8 +34,8 @@
                 </h1>
             </div>
             <h1 class="servicoComponent">Aqui estão algumas das tecnologias em que sou proficiente:</h1>
-        </div> -->
-        <!-- <servicoComponent></servicoComponent> -->
+        </div>
+        <servicoComponent></servicoComponent>
         <gitHubComp></gitHubComp>
         <h1 class="w-100 flexRow justify-content-center align-items-center button">
             <a href="http://"> Entre em contato comigo agora!</a>

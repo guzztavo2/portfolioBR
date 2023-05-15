@@ -1,6 +1,7 @@
 <template>
-    <div v-if="feedbackCopy.visible" class="copyfeedback flexRow justify-content-center align-items-center">
+    <div v-if="feedbackCopy.visible" class="copyfeedback flexColumn justify-content-center align-items-center">
         <i class="fa-solid fa-copy"></i>
+        <h1>Copiado para a área de transferência</h1>
     </div>
     <section class="flexColumn align-items-center">
         <h1>Veja meus principais repositórios do GitHub.</h1>
@@ -25,11 +26,12 @@
                     <p>C:\Portfólio\repositórios</p>
                     <label for="buscarRepo" class="flexRow align-items-center">
                         <i class="fa-solid fa-magnifying-glass flexRow align-items-center"></i>
-                        <input type="text" name="buscarRepo" id="buscarRepo" placeholder="Buscar repositório">
+                        <input type="text" name="buscarRepo" id="buscarRepo" @keyup="pesquisarRepositorios"
+                            placeholder="Buscar repositório">
                     </label>
                 </div>
                 <div class="windowMain flexRow">
-                    <div v-for="item in dataResponse" @click="setSubwindow(item)" :key="item.icone"
+                    <div v-for="(item) in dataResponse" @click="setSubwindow(item)" :key="item.name"
                         class="repositorio flexColumn">
                         <div class="icon" v-html="item.icone"></div>
                         <div class="title">
@@ -61,9 +63,12 @@
                         </p>
                         <div class="flexRow buttons_wrapper">
                             <a v-bind:href="subWindowObj.html_url" target="_blank" rel="noopener noreferrer"
-                                class="w-50">Acessar repositório <i class="fa-brands fa-github"></i></a>
-                            <a @click="copyText(subWindowObj.clone_url)" class="w-50">Url de clonagem <i
-                                    class="fa-regular fa-file-code"></i></a>
+                                class="w-50 flexRow align-items-center">Acessar repositório <i
+                                    class="fa-brands fa-github"></i></a>
+                            <a @click="copyText(subWindowObj.clone_url)" class="w-50 flexRow align-items-center">Copiar
+                                web-url<i class="fa-regular fa-file-code"></i></a>
+                            <input type="text" style="opacity: 0;" name="" id="clone_url"
+                                v-bind:value="subWindowObj.clone_url">
                         </div>
                     </div>
                 </div>
@@ -78,55 +83,51 @@ import { Vue, Options } from 'vue-class-component';
     async mounted() {
         this.verificarIniciarRequest();
     },
-    methods: {
-        async verificarIniciarRequest() {
-            const setTimer = () => {
-                const timer = new Date();
-                timer.setMinutes(timer.getMinutes() + 5);
-                localStorage.setItem('tempoAtualizar', timer.getTime().toString())
-            }, getTimer = () => {
-                const localItem = localStorage.getItem('tempoAtualizar');
-                if (localItem == null)
-                    return;
-                const timer = new Date();
-                timer.setTime(Number.parseInt((localItem)));
-                return timer;
-            }
-            const timer = getTimer() !== null ? getTimer()?.getTime() : null;
-
-
-            if (timer !== null && timer !== undefined && timer <= new Date().getTime())
-                localStorage.clear();
-
-            if (localStorage.getItem('repositorios') == null) {
-                this.dataResponse = await githubRepo.requestGitHub(this.dataResponse);
-                setTimer();
-            } else {
-                this.dataResponse = githubRepo.JSONToObject(localStorage.getItem('repositorios'));
-            }
-
-        }
-    }
 })
 
 export default class gitHubComp extends Vue {
     dataResponse: githubRepo[] = [];
     windowVisible = false;
+    async verificarIniciarRequest() {
+        const setTimer = () => {
+            const timer = new Date();
+            timer.setMinutes(timer.getMinutes() + 5);
+            localStorage.setItem('tempoAtualizar', timer.getTime().toString())
+        }, getTimer = () => {
+            const localItem = localStorage.getItem('tempoAtualizar');
+            if (localItem == null)
+                return;
+            const timer = new Date();
+            timer.setTime(Number.parseInt((localItem)));
+            return timer;
+        }
+        const timer = getTimer() !== null ? getTimer()?.getTime() : null;
+
+
+        if (timer !== null && timer !== undefined && timer <= new Date().getTime())
+            localStorage.clear();
+
+        if (localStorage.getItem('repositorios') == null) {
+            this.dataResponse = await githubRepo.requestGitHub(this.dataResponse);
+            setTimer();
+        } else {
+            this.dataResponse = githubRepo.JSONToObject(localStorage.getItem('repositorios'));
+        }
+
+    }
     feedbackCopy = {
         visible: false,
         element: () => { return document.querySelector('div.copyfeedback') }
-    }
-
-
+    };
     setFeedBackCopy() {
         const { feedbackCopy } = this;
         if (feedbackCopy.visible) {
             feedbackCopy.element()?.classList.remove('opacity100');
             setTimeout(() => {
                 feedbackCopy.visible = false;
-
             }, 200);
         } else {
+
             feedbackCopy.visible = true;
             this.$nextTick(() => {
                 feedbackCopy.element()?.classList.add('opacity100');
@@ -134,7 +135,6 @@ export default class gitHubComp extends Vue {
 
         }
     }
-
     subWindowObj = {
         name: '',
         description: '',
@@ -146,11 +146,24 @@ export default class gitHubComp extends Vue {
         element: () => { return document.querySelector('div.subwindow_wrapper div.subwindow') },
 
     };
-
-
     copyText(text: string) {
         this.setFeedBackCopy();
-        navigator.clipboard.writeText(text);
+        try {
+            navigator.clipboard.writeText(text);
+
+        } catch (err) {
+            try {
+                const input = (document.querySelector('#clone_url') as HTMLInputElement);
+                input.classList.remove('dNone');
+                input.focus();
+                input.select();
+                if (!document.execCommand('copy')) return;
+                input.classList.add('dNone');
+            } catch (err) {
+                return;
+            }
+
+        }
         setTimeout(() => {
             this.setFeedBackCopy();
         }, 500);
@@ -201,6 +214,30 @@ export default class gitHubComp extends Vue {
 
         }
     }
+    pesquisarRepositorios(event: Event) {
+        if (event.target == null) return;
+
+
+        const element = event.target as HTMLInputElement;
+        if (element.value.length == 0) {
+            this.verificarIniciarRequest();
+
+        } else {
+            const buscar = element.value.toLowerCase();
+            const resultado: githubRepo[] = [];
+
+            this.dataResponse.forEach(item => {
+                const valor = item.name.toLowerCase();
+                if (valor.includes(buscar)) {
+                    resultado.push(item);
+                }
+            });
+            this.dataResponse = resultado;
+        }
+
+
+
+    }
 }
 class githubRepo {
     name!: string;
@@ -209,9 +246,11 @@ class githubRepo {
     language!: string;
     icone!: string;
     clone_url!: string;
+    // eslint-disable-next-line
     public static JSONToObject(response: any): githubRepo[] {
         response = JSON.parse(response);
         const dataResponse: githubRepo[] = [];
+        // eslint-disable-next-line
         response.forEach(function (item: any) {
             if (item.name == 'guzztavo2' || item.name == 'numerosPrimosJavaScript' || item.name == 'JogoPongJava')
                 return;
@@ -273,11 +312,16 @@ class githubRepo {
 }
 </script>
 <style scoped>
-.opacity100{
+.dNone {
+    display: none;
+}
+
+.opacity100 {
     opacity: 100% !important;
     transition: ease-in-out 0.2s;
 
 }
+
 div.copyfeedback {
     position: fixed;
     width: 100%;
@@ -285,15 +329,26 @@ div.copyfeedback {
     z-index: 99999;
     left: 0;
     top: 0;
-    font-size: 25vw;
+    font-size: 15vw;
     opacity: 0;
     transition: ease-in-out 0.2s;
 }
 
 div.copyfeedback i {
     opacity: 100%;
-    color: var(--corPreto);
+    color: var(--corBranco);
     text-shadow: 0 0 10px var(--corPreto), 0 0 15px var(--corPreto), 0 0 5px var(--corPreto);
+}
+
+div.copyfeedback h1 {
+    font-size: 1.2vw;
+    background-color: var(--corBranco);
+    text-transform: uppercase;
+    color: var(--corPreto);
+    border: 2px solid var(--corPreto);
+    padding: 1%;
+    margin-top: 1%;
+    opacity: 70%;
 }
 
 div.subwindow div.windowMain p {
@@ -306,7 +361,8 @@ div.subwindow div.windowMain p {
 div.subwindow div.buttons_wrapper a {
     text-decoration: none;
     font-size: 1vw;
-
+    flex-wrap: nowrap;
+    justify-content: space-between;
     width: calc(100% / 2 - 2%);
     margin: 0 1%;
     padding: 2%;
@@ -327,6 +383,12 @@ div.subwindow div.buttons_wrapper a:nth-of-type(2) {
     background-color: var(--corPreto);
     border: 2px solid var(--corVerde);
     color: var(--corBranco);
+    position: relative;
+}
+
+
+div.subwindow div.buttons_wrapper a:nth-of-type(2):hover::after {
+    display: block;
 }
 
 div.subwindow div.buttons_wrapper a:hover {
@@ -567,6 +629,25 @@ section div.itemsWrapper {
 }
 
 @media (max-width:1500px) {
+    div.copyfeedback {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 99999;
+        left: 0;
+        top: 0;
+        font-size: 90px;
+        opacity: 0;
+        transition: ease-in-out 0.2s;
+    }
+
+    div.copyfeedback h1 {
+        font-size: 20px;
+
+    }
+
+
+
     section>h1[data-v-2075db6d]::after {
         font-size: 20px;
 

@@ -108,7 +108,7 @@ export default class sectionMain extends Vue {
 <style scoped>
 section {
     width: 100%;
-    height: 50%;
+    height:35vw;
     min-height: 700px;
     position: relative;
     z-index: 0;
@@ -222,4 +222,5 @@ section div.titleWrapper {
         border-radius: 10px;
 
     }
-}</style>
+}
+</style>
