@@ -108,16 +108,16 @@ h1.tag:nth-child(3) {
 
     }
 
-
     h1.tag {
         font-weight: 300;
         position: absolute;
     }
-
-    section#contact h1.title {
+    section#contato h1.title{
         font-size: 60px;
         text-shadow: 0px 0px 3px var(--corAmarelo), 0px 0px 5px var(--corAmarelo), 0px 0px 4px var(--corAmarelo);
+
     }
+
 
     h1.tag {
         font-size: 40px;
@@ -139,4 +139,5 @@ h1.tag:nth-child(3) {
         padding-top: 25%;
         padding-bottom: 15%;
     }
-}</style>
+}
+</style>
