@@ -1,7 +1,7 @@
 <template >
   <LoadingVue :escreverTextoHandle="escreverTexto" v-if="isLoading" @finish-loading="FinishLoading"></LoadingVue>
-  <HeaderApp @header-click="headerClick" :headerTitle="headerTitle" v-if="!isLoading"></HeaderApp>
-  <HomePage :deletarTexto="deletarTexto" @scroll-header="setHeaderTitle" :headerTitle="headerTitle"
+  <HeaderApp @header-click="headerClick" :headerTitle="scrollHeader" v-if="!isLoading"></HeaderApp>
+  <HomePage :deletarTexto="deletarTexto" @scroll-header="setScrollHeader" :headerTitle="headerTitle"
     :escreverTexto="escreverTexto" v-if="!isLoading"></HomePage>
     <Footer @atualizarHeaderTitle="setHeaderTitle" v-if="!isLoading"></Footer>
 </template>
@@ -41,9 +41,13 @@ import Footer from './components/Footer.vue';
 })
 export default class App extends Vue {
 
-  isLoading = true;
+  isLoading = false;
   headerTitle = '';
+  scrollHeader = '';
 
+  setScrollHeader(header:string){
+    this.scrollHeader = header;
+  }
   setHeaderTitle(header: string) {
     const headerExistsList = [
       'home', 'sobre', 'servicos', 'contato'

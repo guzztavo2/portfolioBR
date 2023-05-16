@@ -87,10 +87,9 @@ import { Options, Vue } from 'vue-class-component';
 })
 export default class HeaderApp extends Vue {
     mobileVisible = false;
-    headerTitle1 = '';
+
     headerClick(headerTitle: string) {
-        this.$emit('header-click', headerTitle);
-        this.headerTitle1 = headerTitle;
+        this.$emit('header-click', headerTitle);       
     }
     mobileListEvent() {
         const elementUl = (document.querySelector('ul') as HTMLElement);

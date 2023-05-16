@@ -40,13 +40,13 @@ export default class sectionContact extends Vue {
 }
 </script>
 <style scoped>
-section#contato {
+section {
     width: 100%;
     position: relative;
     padding: 10% 0;
 }
 
-section#contato h1.title {
+section h1.title {
     padding: 1%;
     font-size: 4vw;
     font-weight: 300;

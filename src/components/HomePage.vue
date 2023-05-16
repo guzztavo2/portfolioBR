@@ -1,12 +1,11 @@
 <template>
-    {{ }}
     <section class="homePage">
         <div class="container">
-            <sectionMain @wheel="elementScroll('home')" id="home" :deletarTexto="deletarTextoHandle"
-                :escreverTexto="escreverTextoHandle"></sectionMain>
-            <sectionSobre @wheel="elementScroll('sobre')" id="sobre" :escreverTexto="escreverTextoHandle"></sectionSobre>
-            <sectionServicos @wheel="elementScroll('servicos')" id="servicos"></sectionServicos>
-            <sectionContact @wheel="elementScroll('contato')" id="contato"></sectionContact>
+            <sectionMain name="home" id="homePage" :deletarTexto="deletarTextoHandle" :escreverTexto="escreverTextoHandle">
+            </sectionMain>
+            <sectionSobre name="sobre" id="sobrePage" :escreverTexto="escreverTextoHandle"></sectionSobre>
+            <sectionServicos name="servicos" id="servicosPage"></sectionServicos>
+            <sectionContact name="contato" id="contatoPage"></sectionContact>
         </div>
     </section>
 </template>
@@ -43,7 +42,7 @@ import { PropType } from 'vue';
     mounted() {
         if (this.headerTitle !== '')
             document.getElementById(this.$props.headerTitle)?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
-
+        this.elementScroll();
     },
     created() {
         this.escreverTextoHandle = this.$props.escreverTexto;
@@ -52,9 +51,37 @@ import { PropType } from 'vue';
     emits: ['scroll-header']
 })
 export default class HomePage extends Vue {
-    elementScroll(element: string) {
-        this.$emit('scroll-header', element);
+    elementScroll() {
+        const sectionList = [
+            { element: document.querySelector('#homePage'), id: 'homePage' },
+            { element: document.querySelector('#sobrePage'), id: 'sobrePage' },
+            { element: document.querySelector('#servicosPage'), id: 'servicosPage' },
+            { element: document.querySelector('#contatoPage'), id: 'contatoPage' },
+        ];
+
+        const callback = (entries:IntersectionObserverEntry[]) => {
+            entries.forEach((entry:IntersectionObserverEntry) => {
+                if (entry.isIntersecting) {
+                    this.$emit('scroll-header', entry.target.getAttribute('name'));
+                }
+            });
+        };
+
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2,
+        };
+
+        const observer = new IntersectionObserver(callback, options);
+
+        sectionList.forEach((section) => {
+            if (section.element) {
+                observer.observe(section.element);
+            }
+        });
     }
+
     // eslint-disable-next-line
     escreverTextoHandle: any;
     // eslint-disable-next-line

@@ -2,7 +2,7 @@
     <div class="wrapperSocial flexColumn">
         <h1 class="title">Caso você tenha a preferência, também poderá acessar as minhas redes sociais:</h1>
         <div class="flexRow align-items-center itemWrapper">
-            <h1 @mouseenter="mouseEnter"><a href="https://www.linkedin.com/in/guzztavo2/" target="_blank"
+            <h1><a href="https://www.linkedin.com/in/guzztavo2/" target="_blank"
                     rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i>LinkedIn</a> </h1>
 
         </div>
@@ -25,11 +25,6 @@ Options({
 
 })
 export default class mediaSocial extends Vue {
-    mouseEnter() {
-        console.log('a');
-    }
-
-
 }
 </script>
 <style scoped>
