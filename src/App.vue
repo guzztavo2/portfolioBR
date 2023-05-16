@@ -49,6 +49,8 @@ export default class App extends Vue {
     this.scrollHeader = header;
   }
   setHeaderTitle(header: string) {
+    
+
     const headerExistsList = [
       'home', 'sobre', 'servicos', 'contato'
     ]

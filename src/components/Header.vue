@@ -21,9 +21,9 @@ import { Options, Vue } from 'vue-class-component';
         'header-click'
     ],
     props: {
-        headerTitle:{
-            type:String,
-            require:true
+        headerTitle: {
+            type: String,
+            require: true
         }
     },
     watch: {
@@ -89,7 +89,7 @@ export default class HeaderApp extends Vue {
     mobileVisible = false;
 
     headerClick(headerTitle: string) {
-        this.$emit('header-click', headerTitle);       
+        this.$emit('header-click', headerTitle);
     }
     mobileListEvent() {
         const elementUl = (document.querySelector('ul') as HTMLElement);
@@ -100,7 +100,7 @@ export default class HeaderApp extends Vue {
         else {
             this.showMobileList();
             this.mobileVisible = true;
-           
+
             window.addEventListener('click', (event: Event) => {
                 const listChildren = elementUl?.querySelectorAll('li');
                 if (listChildren == null || listChildren == undefined)
@@ -118,7 +118,7 @@ export default class HeaderApp extends Vue {
         }
     }
     showMobileList() {
-        
+
         const listElement = document.querySelector('ul');
 
         listElement?.setAttribute('style', 'display:flex');
@@ -144,6 +144,7 @@ export default class HeaderApp extends Vue {
     top: 1%;
     left: 50%;
     transform: translateX(-50%);
+
 }
 
 section {
@@ -157,7 +158,7 @@ section {
     box-shadow: 0px 0px 0.5vw var(--corBranco);
     justify-content: space-between;
     color: var(--corPreto);
-    opacity: 70%;
+    opacity: 40%;
     position: relative;
     z-index: 99;
     transition: ease-in-out opacity 0.5s;
@@ -183,7 +184,7 @@ section h1 {
 
 ul {
     justify-content: space-between;
-    min-width: 40%
+    min-width: 50%
 }
 
 #mobileIcon {
@@ -192,9 +193,9 @@ ul {
 
 ul li {
     display: block;
-    padding: 1%;
+    padding: 2%;
     cursor: pointer;
-    font-size: 1.2vw;
+    font-size: 1.5vw;
     color: var(--corAmarelo);
     text-shadow: 0px 0px 0.2vw var(--corAmarelo);
     transition: ease-in-out 0.2s;
@@ -215,7 +216,7 @@ ul li.active {
 
 div.logo {
     width: 30%;
-    height: 9vw;
+    height: 7vw;
 }
 
 div.logo img {
@@ -232,10 +233,12 @@ div.logo img {
     ul {
         min-width: 55%;
     }
-    div.logo{
-        height:150px;
+
+    div.logo {
+        height: 150px;
     }
-    section{
+
+    section {
         box-shadow: 0px 0px 10px var(--corBranco), 0px 0px 10px var(--corBranco), 0px 0px 10px var(--corBranco);
 
     }

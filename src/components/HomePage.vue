@@ -36,7 +36,7 @@ import { PropType } from 'vue';
     },
     watch: {
         headerTitle: function () {
-            document.querySelector('section#' + this.$props.headerTitle)?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
+            document.querySelector('section#' + this.$props.headerTitle + 'Page')?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
         }
     },
     mounted() {

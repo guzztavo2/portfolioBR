@@ -1,9 +1,3 @@
-<!-- 
- - Enquanto o request do formulário carregar, desativar todos os inputs!
- - Após a conclusão do request do formulário, sistema de tempo!
-
- -->
-
 <template>
     <div v-if="modalObject.visible" class="modalWrapper flexRow justify-content-center align-items-center">
         <div id="modal" class="modal flexColumn align-items-center">
@@ -242,8 +236,7 @@ export default class FormComponent extends Vue {
         const xhr = new XMLHttpRequest();
         const modalView = this.setModalView;
         const userInput = { userInput: this.userInput, numeroUsuario: this.userInput.numeroUsuario };
-        const redefinedSubmit = { captchaObject: this.captchaObject, formSubmitView: this.formSubmitView }
-
+        const redefinedSubmit = { captchaObject: this.captchaObject, formSubmitView: this.formSubmitView };
         const setInput = (listElements: { attribute: string, value: string }[], removeAtributes = false) => {
             const elements = Object.values(this.input);
             // eslint-disable-next-line
@@ -256,11 +249,11 @@ export default class FormComponent extends Vue {
                         result.setAttribute(n.attribute, n.value);
                 }
             });
-        }
+        };
 
         xhr.onloadstart = function () {
             setInput([{ attribute: "disabled", value: 'true' }, { attribute: "style", value: 'opacity:70%' }]);
-        }
+        };
         xhr.onreadystatechange = function () {
 
             if (this.readyState == 4 && this.status == 200) {
