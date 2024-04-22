@@ -120,7 +120,7 @@ section {
 }
 
 section .parallax {
-    background-image: url("../assets/Imagens/backgroundImg.png");
+    background-image: url("../assets/Imagens/backgroundImg.jpg");
 
     width: 100%;
     height: 100%;

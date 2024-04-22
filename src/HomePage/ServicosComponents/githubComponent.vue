@@ -274,7 +274,7 @@ class githubRepo {
                 }
             }
             xhttp.open('GET', 'https://api.github.com/users/guzztavo2/repos');
-            xhttp.setRequestHeader('Authorization', 'Bearer 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')
+            xhttp.setRequestHeader('Authorization', `Bearer ${process.env.VUE_APP_GITHUB_TOKEN}`)
             xhttp.send();
         }).then(success => {
             localStorage.setItem('repositorios', (success as unknown as string));

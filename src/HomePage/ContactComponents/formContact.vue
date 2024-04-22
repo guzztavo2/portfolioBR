@@ -13,13 +13,16 @@
         </div>
     </div>
     <form method="post" @submit.prevent="onSubmitFormContact">
-        <h1 class="titleForm">Por favor, complete o formulário e envie-o, dessa maneira ele será direcionado diretamente a
+        <h1 class="titleForm">Por favor, complete o formulário e envie-o, dessa maneira ele será direcionado diretamente
+            a
             mim. Farei o possível para estabelecer uma comunicação o mais breve possível.</h1>
         <label for="nomeUsuario">
             <p><i class="fa-solid fa-user"></i> Nome completo:</p>
-            <input v-model="userInput.nomeUsuario" required @focusout="verificarNomeUsuario" @keyup="verificarNomeUsuario"
-                type="text" name="nomeUsuario" id="nomeUsuario" placeholder="Digite aqui seu nome *">
-            <div v-if="userError.nomeUsuario.length > 0" class="error"><small v-html="userError.nomeUsuario"></small></div>
+            <input v-model="userInput.nomeUsuario" required @focusout="verificarNomeUsuario"
+                @keyup="verificarNomeUsuario" type="text" name="nomeUsuario" id="nomeUsuario"
+                placeholder="Digite aqui seu nome *">
+            <div v-if="userError.nomeUsuario.length > 0" class="error"><small v-html="userError.nomeUsuario"></small>
+            </div>
         </label>
         <label for="emailUsuario">
             <p><i class="fa-solid fa-at"></i> E-mail para a comunicação:</p>
@@ -33,7 +36,8 @@
             <p><i class="fa-brands fa-whatsapp"></i> Digite seu WhatssApp (Opcional):</p>
             <input v-model="userInput.numeroUsuario" @focusout="verificarNumeroFocusOut" @keyup="verificarNumeroUsuario"
                 type="text" name="numeroUsuario" id="numeroUsuario" placeholder="Digite aqui seu número *">
-            <div v-if="userError.numeroUsuario.length > 0" class="error"><small v-html="userError.numeroUsuario"></small>
+            <div v-if="userError.numeroUsuario.length > 0" class="error"><small
+                    v-html="userError.numeroUsuario"></small>
             </div>
 
         </label>
@@ -47,14 +51,16 @@
 
         </label>
         <div v-if="captchaObject.visibleCaptcha" class="captcha">
-            <VueClientRecaptcha :value="captchaObject.captchaValue" :show-capital-case-letters="false"
+            <VueClientRecaptcha @click="verificarClick($event)" :value="captchaObject.captchaValue" :show-capital-case-letters="false"
                 :show-lower-case-letters="false" @isValid="checkValidCaptcha" />
             <label for="">
-                <input type="text" placeholder="Escreva o captcha acima**" v-model="captchaObject.captchaValue" />
-                <div class="error"><small style="text-align: center;" :v-html="captchaObject.captchaError">Lembre-se: é
+                <input type="text" placeholder="Escreva o captcha acima" v-model="captchaObject.captchaValue" />
+                <div class="error">
+                    <small style="text-align: center;" :v-html="captchaObject.captchaError">Lembre-se: é
                         importante usar
                         letras maiúsculas e
-                        minúsculas corretamente.</small></div>
+                        minúsculas corretamente.</small>
+                </div>
                 <p style="text-align: center;">Por favor, responda ao captcha para prosseguir!</p>
 
 
@@ -143,7 +149,6 @@ export default class FormComponent extends Vue {
     verificarNumeroUsuario() {
         const { userInput, userError } = this;
 
-
         let numeroUsuario = userInput.numeroUsuario;
 
         if (numeroUsuario.length > 14) {
@@ -217,7 +222,7 @@ export default class FormComponent extends Vue {
 
         }
 
-        else if (this.captchaObject.captchaValue.length >= 5 && value == false)
+        else if (this.captchaObject.captchaValue.length > 5 && value == false)
             this.captchaObject.captchaValue = this.captchaObject.captchaValue.replace(this.captchaObject.captchaValue[this.captchaObject.captchaValue.length - 1], '');
 
     }
@@ -280,6 +285,14 @@ export default class FormComponent extends Vue {
         else {
             return '';
         }
+    }
+    verificarClick(event:Event){
+        const element = (event.target as HTMLElement);
+      
+        if(element.classList.contains('vue_client_recaptcha_icon') || element.classList.contains('vue_client_recaptcha_icon_svg')){
+           this.captchaObject.captchaValue = '';
+        }
+       
     }
     verificarNomeUsuario() {
         var userInput = this.userInput.nomeUsuario;
