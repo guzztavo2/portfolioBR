@@ -7,10 +7,10 @@
                 </div>
                 <div class="wrapperText">
                     <p>
-                        Com anos de experiência no desenvolvimento web, adquiri habilidades sólidas em CSS,
-                        incluindo a criação de designs responsivos utilizando media queries, CSS grid e flexbox.
-                        Além disso, estou sempre atualizado com as melhores práticas e tendências de design,
-                        buscando criar experiências de usuário únicas e atraentes.
+                        Com anos de experiência no desenvolvimento web, adquiri habilidades sólidas em CSS, incluindo a
+                        criação de designs responsivos utilizando media queries, CSS grid e flexbox. Além disso,
+                        mantenho-me sempre atualizado com as melhores práticas e tendências de design, buscando criar
+                        experiências de usuário únicas e atraentes.
                     </p>
                 </div>
             </div>
@@ -20,11 +20,10 @@
 
                 </div>
                 <div class="wrapperText">
-                    <p> Com anos de experiência em desenvolvimento web, me tornei um profundo conhecedor de
-                        JavaScript e suas diversas funcionalidades, incluindo eventos, Promises e muito mais. Estou
-                        constantemente buscando aprimorar meus conhecimentos nessa tecnologia fascinante, que me
-                        atrai pelas suas capacidades de modificar a DOM e por suas muitas outras características
-                        poderosas.</p>
+                    <p> Com anos de experiência em desenvolvimento web, me tornei um profundo conhecedor de JavaScript e
+                        suas diversas funcionalidades, incluindo eventos, Promises e muito mais. Estou constantemente
+                        buscando aprimorar meus conhecimentos nessa tecnologia fascinante, que me atrai por suas
+                        capacidades de modificar a DOM e por suas muitas outras características poderosas.</p>
 
                 </div>
 
@@ -36,9 +35,9 @@
                 <div class="wrapperText">
                     <p>
                         Como programador PHP experiente, desenvolvi diversos projetos completos utilizando PHP puro, em
-                        conjunto com o XAMPP para executar o servidor em localhost e também utilizei o banco de dados
-                        integrado e gratuito, MySQL. Estou constantemente buscando maneiras de melhorar minhas
-                        habilidades técnicas e criar projetos desafiadores e inovadores. Fique à vontade para dar uma
+                        conjunto com o XAMPP para executar o servidor em localhost, além de utilizar o banco de dados
+                        integrado e gratuito, MySQL. Estou continuamente buscando maneiras de aprimorar minhas
+                        habilidades técnicas e criar projetos desafiadores e inovadores. Sinta-se à vontade para dar uma
                         olhada em meu portfólio e conferir alguns dos projetos que desenvolvi.
                     </p>
                 </div>
@@ -49,13 +48,12 @@
                 </div>
                 <div class="wrapperText">
                     <p>
-                        Além de minha experiência em PHP, também sou proficiente em tecnologias de front-end,
-                        incluindo Vue.js, Angular e outras. Tenho vários projetos desenvolvidos nessa tecnologia,
-                        inclusive este site que foi construído utilizando Vue.js. Sou especialmente apaixonado pelo
-                        TypeScript e adquiri conhecimento inicial através do AngularJS. Sempre busco utilizar as
-                        melhores práticas e tecnologias de ponta para criar interfaces de usuário atraentes e
-                        responsivas. Dê uma olhada em meu portfólio para ver alguns dos projetos de front-end que
-                        desenvolvi.
+                        Além da minha experiência em PHP, também sou proficiente em tecnologias de front-end, incluindo
+                        Vue.js, Angular e outras. Tenho vários projetos desenvolvidos nessas tecnologias, inclusive este
+                        site que foi construído utilizando Vue.js. Tenho um interesse especial em TypeScript, tendo
+                        adquirido conhecimento inicial através do AngularJS. Sempre busco utilizar as melhores práticas
+                        e tecnologias de ponta para criar interfaces de usuário atraentes e responsivas. Fique à vontade
+                        para explorar meu portfólio e conferir alguns dos projetos de front-end que desenvolvi.
                     </p>
                 </div>
 
@@ -83,9 +81,9 @@
                     <p>
                         Com a minha experiência em JavaScript e CSS, desenvolver sites usando WordPress tornou-se uma
                         tarefa simples e eficiente. Além disso, o WordPress oferece um painel CMS intuitivo em
-                        português, o que facilita a gestão de conteúdo e garante um processo mais ágil para o cliente.
-                        Com a combinação de habilidades em front-end e o uso do WordPress, é possível desenvolver sites
-                        elegantes e responsivos com rapidez e eficiência.
+                        português, facilitando a gestão de conteúdo e proporcionando um processo mais ágil para o
+                        cliente. Combinando essas habilidades de front-end com o uso do WordPress, é possível
+                        desenvolver sites elegantes e responsivos de maneira rápida e eficiente.
                     </p>
                 </div>
 
@@ -95,9 +93,9 @@
                     <i class="fa-brands fa-github"></i>
                 </div>
                 <div class="wrapperText">
-                    <p>Com a minha experiência em desenvolvimento web FullStack, gostaria de destacar a
-                        importância do GitHub como uma plataforma essencial para versionar códigos. Tenho vários
-                        projetos hospedados lá, o que demonstra minha familiaridade e habilidade com a plataforma.
+                    <p>Com a minha experiência em desenvolvimento web FullStack, gostaria de destacar a importância do
+                        GitHub como uma plataforma essencial para versionar códigos. Tenho vários projetos hospedados
+                        lá, o que demonstra minha familiaridade e habilidade com a plataforma.
 
                     </p>
                     <a href="https://github.com/guzztavo2" target="_blank">Clique aqui!</a>
@@ -111,9 +109,9 @@
                 </div>
                 <div class="wrapperText">
                     <p>
-                        Não posso falar sobre desenvolvimento Front-End sem mencionar um dos melhores frameworks
-                        disponíveis no mercado: o Bootstrap! Como desenvolvedor, tenho experiência em utilizar essa
-                        ferramenta em vários projetos, aproveitando a facilidade que ela oferece para construir
+                        Não posso deixar de mencionar um dos melhores frameworks disponíveis no mercado para
+                        desenvolvimento Front-End: o Bootstrap! Como desenvolvedor, tenho ampla experiência em utilizar
+                        essa ferramenta em diversos projetos, aproveitando a facilidade que ela oferece para construir
                         interfaces de usuário elegantes e responsivas. </p>
                 </div>
 
@@ -469,4 +467,5 @@ div.item div.wrapperIcon::after {
         width: 30px;
         height: 30px;
     }
-}</style>
+}
+</style>

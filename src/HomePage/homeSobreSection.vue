@@ -21,7 +21,8 @@
                 </p>
                 <div class="flexRow __formacoes boxVermelho fade-in-top">
                     <img src="@/assets/Imagens/educacao-1.png" class="fade-in-top" alt="">
-                    <h4>Curso Técnico: Informática para Internet. <br>Escola Estadual: ETEC Laurindo Alves de Queiroz, 2016
+                    <h4>Curso Técnico: Informática para Internet. <br>Escola Estadual: ETEC Laurindo Alves de Queiroz,
+                        2016
                         - 2017</h4>
                     <p>
                     </p>
@@ -64,13 +65,34 @@ export default class sectionSobre extends Vue {
     writeEvent() {
 
         const itemsAndEvents: { 'domElement': HTMLElement, 'texto': string }[] = [
-            { domElement: (document.querySelector('h1.boxVerde') as HTMLElement), texto: 'Olá, eu sou o Gustavo, programador e desenvolvedor FullStack.' },
-            { domElement: (document.querySelector('div.w-50:nth-child(2) > p:nth-child(1)') as HTMLElement), texto: "Nasci em Miguelópolis, uma cidade do interior de São Paulo, e tenho 23 anos. Desde muito jovem, sempre me interessei por tecnologia. Para que você possa me conhecer um pouco melhor, gostaria de começar apresentando minhas formações: " },
-            { domElement: (document.querySelector('div.__formacoes:nth-child(2) > p:nth-child(3)') as HTMLElement), texto: " Com um ano e meio de estudo, pude ter minha primeira experiência com tecnologia e meu TCC foi desenvolvido utilizando o Adobe Flash. Criei uma aplicação que servia como um mapa da escola, já que o campus era combinado com uma área de estudos agrícolas. Optei por utilizar o software da Adobe porque era capaz de funcionar em diversos dispositivos disponíveis na época." },
-            { domElement: (document.querySelector('div.flexRow:nth-child(3) > p:nth-child(3)') as HTMLElement), texto: "Iniciei minha graduação em uma cidade vizinha chamada Barretos, também no estado de São Paulo, quando tinha 18 anos. Como morava em uma cidade do interior, precisava viajar diariamente para frequentar as aulas. Devido à pandemia, meu TCC foi uma experiência única, na qual utilizei duas inteligências artificiais da época que foram treinadas e testadas para uso como um possível teste de Covid-19, utilizando apenas uma foto do tórax em raio-X do paciente." },
-            { domElement: (document.querySelector('div.w-50:nth-child(1) > h4:nth-child(3):not(b)') as HTMLElement), texto: '"O sucesso é a soma de pequenos esforços repetidos dia após dia" - Robert Collier' },
-            { domElement: (document.querySelector('div.w-50:nth-child(1) > h4.boxVerde:nth-of-type(2)') as HTMLElement), texto: "Durante os meus 19 anos, enquanto concluía a minha graduação, trabalhei em uma empresa de açúcar e energia, embora esse trabalho não estivesse relacionado à área de Tecnologia. Permaneci na empresa até novembro de 2022, e graças a esse trabalho, tive a oportunidade de montar um setup para trabalhar em casa, com um novo computador e um notebook para trabalhar em mobilidade, caso seja necessário." },
-            { domElement: (document.querySelector('div.w-50:nth-child(1) > h4.boxVerde:nth-of-type(3)') as HTMLElement), texto: "  Depois de me formar, fiz cursos de programação à distância, nos quais aprendi a trabalhar comtecnologias Front-End, incluindo HTML5, CSS3, JavaScript, VueJS, AngularJS e várias outras tecnologias. Depois de me aprofundar e estudar Front-End, comecei a estudar Back-End, e procurei me especializar emuma linguagem conhecida, optando por PHP, Laravel, Node, entre outras." },
+            {
+                domElement: (document.querySelector('h1.boxVerde') as HTMLElement),
+                texto: 'Olá, eu sou Gustavo, programador e desenvolvedor FullStack.'
+            },
+            {
+                domElement: (document.querySelector('div.w-50:nth-child(2) > p:nth-child(1)') as HTMLElement),
+                texto: "Nasci em Miguelópolis, uma cidade do interior de São Paulo, e tenho 24 anos. Desde muito jovem, sempre tive um grande interesse por tecnologia. Para que você possa me conhecer um pouco melhor, vou começar apresentando minhas formações:"
+            },
+            {
+                domElement: (document.querySelector('div.__formacoes:nth-child(2) > p:nth-child(3)') as HTMLElement),
+                texto: " Com um ano e meio de estudo, tive minha primeira experiência com tecnologia. Para o meu TCC, desenvolvi uma aplicação utilizando o Adobe Flash, que servia como um mapa da escola. Isso foi especialmente útil, pois o campus era combinado com uma área de estudos agrícolas. Optei pelo software da Adobe porque ele funcionava em diversos dispositivos disponíveis na época."
+            },
+            {
+                domElement: (document.querySelector('div.flexRow:nth-child(3) > p:nth-child(3)') as HTMLElement),
+                texto: "Iniciei minha graduação em uma cidade vizinha chamada Barretos, também no estado de São Paulo, quando tinha 18 anos. Morando em uma cidade do interior, precisei viajar diariamente para frequentar as aulas. Devido à pandemia, meu TCC foi uma experiência única. Utilizei duas inteligências artificiais da época, treinadas e testadas para uso como um possível teste de Covid-19, analisando apenas uma foto de raio-X do tórax do paciente."
+            },
+            {
+                domElement: (document.querySelector('div.w-50:nth-child(1) > h4:nth-child(3):not(b)') as HTMLElement),
+                texto: '"O sucesso é a soma de pequenos esforços repetidos dia após dia" - Robert Collier'
+            },
+            {
+                domElement: (document.querySelector('div.w-50:nth-child(1) > h4.boxVerde:nth-of-type(2)') as HTMLElement),
+                texto: "Durante os meus 19 anos, enquanto concluía minha graduação, trabalhei em uma empresa de açúcar e energia, embora essa função não estivesse relacionada à área de Tecnologia. Permaneci na empresa até novembro de 2022. Graças a esse trabalho, consegui montar um setup para trabalhar em casa, incluindo um novo computador e um notebook para trabalhar com mobilidade, caso fosse necessário."
+            },
+            {
+                domElement: (document.querySelector('div.w-50:nth-child(1) > h4.boxVerde:nth-of-type(3)') as HTMLElement),
+                texto: "  Depois de me formar, fiz cursos de programação à distância, nos quais aprendi a trabalhar com tecnologias Front-End, incluindo HTML5, CSS3, JavaScript, VueJS, AngularJS e várias outras. Após me aprofundar no Front-End, comecei a estudar Back-End, especializando-me em linguagens como PHP, Laravel, Node, entre outras."
+            },
 
         ];
         itemsAndEvents.forEach((element) => {

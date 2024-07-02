@@ -10,7 +10,8 @@
 
             <div class="flexRow justify-content-center">
                 <div class="w-100">
-                    <h1 class="subtitle">Para entrar em contato ou contratar meus serviços, use o formulário ou minhas redes
+                    <h1 class="subtitle">Para entrar em contato ou contratar meus serviços, use o formulário ou minhas
+                        redes
                         sociais abaixo. Mais informações em meu perfil no GitHub.
                     </h1>
                 </div>
@@ -112,7 +113,8 @@ h1.tag:nth-child(3) {
         font-weight: 300;
         position: absolute;
     }
-    section#contato h1.title{
+
+    section#contato h1.title {
         font-size: 60px;
         text-shadow: 0px 0px 3px var(--corAmarelo), 0px 0px 5px var(--corAmarelo), 0px 0px 4px var(--corAmarelo);
 

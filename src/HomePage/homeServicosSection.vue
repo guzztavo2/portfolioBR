@@ -10,27 +10,21 @@
                 <h1 class="w-50 flexColumn align-items-center">
                     <span class="icon"><i class="fa-solid fa-cube"></i></span>
                     <span class="title">Desenvolvimento Front-End</span>
-                    Como um profissional de desenvolvimento front-end, é minha responsabilidade criar a interface do usuário
-                    de
-                    um projeto de software. A interface do usuário é tudo o que é visível e interativo para o usuário final.
-                    Meu
-                    objetivo é garantir que a aparência e a funcionalidade do aplicativo ou website sejam atraentes,
-                    intuitivas
-                    e fáceis de usar, incluindo a responsividade, que permite que o website seja acessível em qualquer
-                    dispositivo escolhido pelo cliente.
-
+                    Como profissional de desenvolvimento front-end, é minha responsabilidade criar a interface do
+                    usuário de um projeto de software. A interface do usuário abrange tudo o que é visível e interativo
+                    para o usuário final. Meu objetivo é garantir que a aparência e a funcionalidade do aplicativo ou
+                    website sejam atraentes, intuitivas e fáceis de usar. Isso inclui a responsividade, permitindo que o
+                    website seja acessível em qualquer dispositivo escolhido pelo cliente.
                     Para desenvolver interfaces de usuário eficazes, utilizo tecnologias como HTML5, CSS, JavaScript e
-                    frameworks como o VueJS.
+                    frameworks como VueJS.
                 </h1>
                 <h1 class="w-50 flexColumn align-items-center">
                     <span class="icon"><i class="fa-brands fa-perbyte"></i></span>
                     <span class="title">Desenvolvimento Back-End</span>
-                    Como um profissional de desenvolvimento back-end, minha responsabilidade é garantir que os recursos e a
-                    lógica de um projeto de software estejam funcionando corretamente por trás da interface do usuário.
-                    Trabalho com tecnologias como PHP, MySQL, SQL, Asp.Net e Laravel para desenvolver soluções escaláveis e
+                    Como profissional de desenvolvimento back-end, minha responsabilidade é garantir que os recursos e a
+                    lógica de um projeto de software funcionem corretamente por trás da interface do usuário. Trabalho
+                    com tecnologias como PHP, NodeJS, Python, MySQL, SQL, Asp.Net e Laravel para desenvolver soluções escaláveis e
                     confiáveis que atendam às necessidades dos usuários finais.
-
-
                 </h1>
             </div>
             <h1 class="servicoComponent">Aqui estão algumas das tecnologias em que sou proficiente:</h1>
