@@ -1,9 +1,9 @@
-<template >
-  <LoadingVue :escreverTextoHandle="escreverTexto" v-if="isLoading" @finish-loading="FinishLoading"></LoadingVue>
+<template>
+  <LoadingVue :writeTextHandle="writeText" v-if="isLoading" @finish-loading="FinishLoading"></LoadingVue>
   <HeaderApp @header-click="headerClick" :headerTitle="scrollHeader" v-if="!isLoading"></HeaderApp>
-  <HomePage :deletarTexto="deletarTexto" @scroll-header="setScrollHeader" :headerTitle="headerTitle"
-    :escreverTexto="escreverTexto" v-if="!isLoading"></HomePage>
-    <Footer @atualizarHeaderTitle="setHeaderTitle" v-if="!isLoading"></Footer>
+  <HomePage :deleteText="deleteText" @scroll-header="setScrollHeader" :headerTitle="headerTitle" :writeText="writeText"
+    v-if="!isLoading"></HomePage>
+  <Footer @updateHeaderTitle="setHeaderTitle" v-if="!isLoading"></Footer>
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
@@ -45,7 +45,7 @@ export default class App extends Vue {
   headerTitle = '';
   scrollHeader = '';
 
-  setScrollHeader(header:string){
+  setScrollHeader(header: string) {
     this.scrollHeader = header;
   }
   setHeaderTitle(header: string) {
@@ -64,20 +64,20 @@ export default class App extends Vue {
   headerClick(header: string) {
     this.headerTitle = header;
   }
-  escreverTexto(element: Element, text: string, removerCursoNoUltimo: boolean, elementCarregador: boolean, tempoFuncionamento?: number) {
+  writeText(element: Element, text: string, removerCursoNoUltimo: boolean, elementCarregador: boolean, tempoFuncionamento?: number) {
     const cursor = '<span class="cursor">▎</span>';
     if (tempoFuncionamento == undefined) {
       tempoFuncionamento = 35;
     }
     return new Promise<void>((result) => {
       var cont = 0;
-      const escreverTexto = setInterval(() => {
+      const writeText = setInterval(() => {
         element.innerHTML = element.innerHTML.replace(cursor, '');
         element.innerHTML += text[cont];
         element.innerHTML += cursor;
         cont++;
         const clearInterval1 = () => {
-          clearInterval(escreverTexto);
+          clearInterval(writeText);
           if (elementCarregador == true) {
             setTimeout(() => {
               element.classList.add('fade-out');
@@ -101,7 +101,7 @@ export default class App extends Vue {
       }, tempoFuncionamento);
     })
   }
-  deletarTexto(element: Element, tempoFuncionamento?: number) {
+  deleteText(element: Element, tempoFuncionamento?: number) {
     if (tempoFuncionamento == undefined)
       tempoFuncionamento = 35;
     const cursor = '<span class="cursor">▎</span>';
@@ -112,14 +112,14 @@ export default class App extends Vue {
 
 
     return new Promise<void>((result) => {
-      const escreverTexto = setInterval(() => {
+      const writeText = setInterval(() => {
         element.innerHTML = element.innerHTML.replace(cursor, '');
         element.innerHTML = element.innerHTML.substring(0, cont);
 
         element.innerHTML += cursor;
         cont--;
         const clearInterval1 = () => {
-          clearInterval(escreverTexto);
+          clearInterval(writeText);
         }
         if (cont < 0) {
           clearInterval1();

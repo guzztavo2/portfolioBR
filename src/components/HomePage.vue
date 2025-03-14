@@ -1,9 +1,9 @@
 <template>
     <section class="homePage">
         <div class="container">
-            <sectionMain name="home" id="homePage" :deletarTexto="deletarTextoHandle" :escreverTexto="escreverTextoHandle">
+            <sectionMain name="home" id="homePage" :deleteText="deleteTextHandle" :writeText="writeTextHandle">
             </sectionMain>
-            <sectionSobre name="sobre" id="sobrePage" :escreverTexto="escreverTextoHandle"></sectionSobre>
+            <sectionSobre name="sobre" id="sobrePage" :writeText="writeTextHandle"></sectionSobre>
             <sectionServicos name="servicos" id="servicosPage"></sectionServicos>
             <sectionContact name="contato" id="contatoPage"></sectionContact>
         </div>
@@ -21,7 +21,7 @@ import { PropType } from 'vue';
         sectionMain, sectionSobre, sectionServicos, sectionContact
     },
     props: {
-        escreverTexto: {
+        writeText: {
             type: Function,
             required: true
         },
@@ -29,7 +29,7 @@ import { PropType } from 'vue';
             type: String as PropType<string>,
             required: true
         },
-        deletarTexto: {
+        deleteText: {
             type: Function,
             required: true
         },
@@ -45,8 +45,8 @@ import { PropType } from 'vue';
         this.elementScroll();
     },
     created() {
-        this.escreverTextoHandle = this.$props.escreverTexto;
-        this.deletarTextoHandle = this.$props.deletarTexto;
+        this.writeTextHandle = this.$props.writeText;
+        this.deleteTextHandle = this.$props.deleteText;
     },
     emits: ['scroll-header']
 })
@@ -83,9 +83,9 @@ export default class HomePage extends Vue {
     }
 
     // eslint-disable-next-line
-    escreverTextoHandle: any;
+    writeTextHandle: any;
     // eslint-disable-next-line
-    deletarTextoHandle: any;
+    deleteTextHandle: any;
     lidarComEventoPersonalizado(headerTitle: string) {
         alert(headerTitle);
     }

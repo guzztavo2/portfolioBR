@@ -103,7 +103,6 @@ export default class gitHubComp extends Vue {
         }
         const timer = getTimer() !== null ? getTimer()?.getTime() : null;
 
-
         if (timer !== null && timer !== undefined && timer <= new Date().getTime())
             localStorage.clear();
 
@@ -115,6 +114,7 @@ export default class gitHubComp extends Vue {
         }
 
     }
+    
     feedbackCopy = {
         visible: false,
         element: () => { return document.querySelector('div.copyfeedback') }

@@ -6,20 +6,19 @@
         <div class="textWrapper flexRow">
             <div class="w-50 flexColumn align-items-center fade-in-top">
                 <img src="@/assets/Imagens/profissional.png" class="fade-in-top img__wrapperUser" alt="">
-                <h1 class="boxVerde fade-in-top" style="margin-top:20px;">
+                <h1 class="boxSuccess fade-in-top" style="margin-top:20px;">
                 </h1>
-                <h4 class="boxVermelho fade-in-top">
+                <h4 class="boxDanger fade-in-top">
                 </h4>
-                <h4 class="boxVerde fade-in-top">
+                <h4 class="boxSuccess fade-in-top">
                 </h4>
-                <h4 class="boxVerde fade-in-top">
-
+                <h4 class="boxSuccess fade-in-top">
                 </h4>
             </div>
             <div class="w-50 fade-in-top">
-                <p class="boxVerde fade-in-top">
+                <p class="boxSuccess fade-in-top">
                 </p>
-                <div class="flexRow __formacoes boxVermelho fade-in-top">
+                <div class="flexRow __formacoes boxDanger fade-in-top">
                     <img src="@/assets/Imagens/educacao-1.png" class="fade-in-top" alt="">
                     <h4>Curso Técnico: Informática para Internet. <br>Escola Estadual: ETEC Laurindo Alves de Queiroz,
                         2016
@@ -27,99 +26,85 @@
                     <p>
                     </p>
                 </div>
-
-                <div class="flexRow __formacoes boxVermelho fade-in-top">
+                <div class="flexRow __formacoes boxDanger fade-in-top">
                     <img src="@/assets/Imagens/educacao-2.png" class="fade-in-top" alt="">
                     <h4>Curso Superior: Tec. em Análise em Desenvolvimento de Sistemas. Instuto
                         Federal de Ciências e Tecnologia: Barretos - SP, 2018 - 2021</h4>
                     <p>
                     </p>
                 </div>
-
             </div>
         </div>
     </section>
 </template>
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component';
-
 @Options({
     props: {
-        escreverTexto: {
+        writeText: {
             type: Function,
             required: true
         }
     },
     mounted() {
-        this.escreverTextoHandle = this.escreverTexto;
+        this.writeTextHandle = this.writeText;
         this.writeEvent();
     }
 })
-// this.$props.escreverTextoHandle(elementsValues[cont].element, elementsValues[cont].value, false, true).then(() => {
-// element:HTMLElement, texto:string, removerCursor:boolean,
+// this.$props.writeTextHandle(elementsValues[cont].element, elementsValues[cont].value, false, true).then(() => {
+// element:HTMLElement, text:string, removerCursor:boolean,
 export default class sectionSobre extends Vue {
     // eslint-disable-next-line
-    escreverTextoHandle: any;
+    writeTextHandle: any;
     animateFinaly = false;
-
     writeEvent() {
-
-        const itemsAndEvents: { 'domElement': HTMLElement, 'texto': string }[] = [
+        const itemsAndEvents: { 'domElement': HTMLElement, 'text': string }[] = [
             {
-                domElement: (document.querySelector('h1.boxVerde') as HTMLElement),
-                texto: 'Olá, eu sou Gustavo, programador e desenvolvedor FullStack.'
+                domElement: (document.querySelector('h1.boxSuccess') as HTMLElement),
+                text: 'Olá, eu sou Gustavo, programador e desenvolvedor FullStack.'
             },
             {
                 domElement: (document.querySelector('div.w-50:nth-child(2) > p:nth-child(1)') as HTMLElement),
-                texto: "Nasci em Miguelópolis, uma cidade do interior de São Paulo, e tenho 24 anos. Desde muito jovem, sempre tive um grande interesse por tecnologia. Para que você possa me conhecer um pouco melhor, vou começar apresentando minhas formações:"
+                text: "Nasci em Miguelópolis, uma cidade do interior de São Paulo, e tenho 24 anos. Desde muito jovem, sempre tive um grande interesse por tecnologia. Para que você possa me conhecer um pouco melhor, vou começar apresentando minhas formações:"
             },
             {
                 domElement: (document.querySelector('div.__formacoes:nth-child(2) > p:nth-child(3)') as HTMLElement),
-                texto: " Com um ano e meio de estudo, tive minha primeira experiência com tecnologia. Para o meu TCC, desenvolvi uma aplicação utilizando o Adobe Flash, que servia como um mapa da escola. Isso foi especialmente útil, pois o campus era combinado com uma área de estudos agrícolas. Optei pelo software da Adobe porque ele funcionava em diversos dispositivos disponíveis na época."
+                text: " Com um ano e meio de estudo, tive minha primeira experiência com tecnologia. Para o meu TCC, desenvolvi uma aplicação utilizando o Adobe Flash, que servia como um mapa da escola. Isso foi especialmente útil, pois o campus era combinado com uma área de estudos agrícolas. Optei pelo software da Adobe porque ele funcionava em diversos dispositivos disponíveis na época."
             },
             {
                 domElement: (document.querySelector('div.flexRow:nth-child(3) > p:nth-child(3)') as HTMLElement),
-                texto: "Iniciei minha graduação em uma cidade vizinha chamada Barretos, também no estado de São Paulo, quando tinha 18 anos. Morando em uma cidade do interior, precisei viajar diariamente para frequentar as aulas. Devido à pandemia, meu TCC foi uma experiência única. Utilizei duas inteligências artificiais da época, treinadas e testadas para uso como um possível teste de Covid-19, analisando apenas uma foto de raio-X do tórax do paciente."
+                text: "Iniciei minha graduação em uma cidade vizinha chamada Barretos, também no estado de São Paulo, quando tinha 18 anos. Morando em uma cidade do interior, precisei viajar diariamente para frequentar as aulas. Devido à pandemia, meu TCC foi uma experiência única. Utilizei duas inteligências artificiais da época, treinadas e testadas para uso como um possível teste de Covid-19, analisando apenas uma foto de raio-X do tórax do paciente."
             },
             {
                 domElement: (document.querySelector('div.w-50:nth-child(1) > h4:nth-child(3):not(b)') as HTMLElement),
-                texto: '"O sucesso é a soma de pequenos esforços repetidos dia após dia" - Robert Collier'
+                text: '"O sucesso é a soma de pequenos esforços repetidos dia após dia" - Robert Collier'
             },
             {
-                domElement: (document.querySelector('div.w-50:nth-child(1) > h4.boxVerde:nth-of-type(2)') as HTMLElement),
-                texto: "Durante os meus 19 anos, enquanto concluía minha graduação, trabalhei em uma empresa de açúcar e energia, embora essa função não estivesse relacionada à área de Tecnologia. Permaneci na empresa até novembro de 2022. Graças a esse trabalho, consegui montar um setup para trabalhar em casa, incluindo um novo computador e um notebook para trabalhar com mobilidade, caso fosse necessário."
+                domElement: (document.querySelector('div.w-50:nth-child(1) > h4.boxSuccess:nth-of-type(2)') as HTMLElement),
+                text: "Durante os meus 19 anos, enquanto concluía minha graduação, trabalhei em uma empresa de açúcar e energia, embora essa função não estivesse relacionada à área de Tecnologia. Permaneci na empresa até novembro de 2022. Graças a esse trabalho, consegui montar um setup para trabalhar em casa, incluindo um novo computador e um notebook para trabalhar com mobilidade, caso fosse necessário."
             },
             {
-                domElement: (document.querySelector('div.w-50:nth-child(1) > h4.boxVerde:nth-of-type(3)') as HTMLElement),
-                texto: "  Depois de me formar, fiz cursos de programação à distância, nos quais aprendi a trabalhar com tecnologias Front-End, incluindo HTML5, CSS3, JavaScript, VueJS, AngularJS e várias outras. Após me aprofundar no Front-End, comecei a estudar Back-End, especializando-me em linguagens como PHP, Laravel, Node, entre outras."
+                domElement: (document.querySelector('div.w-50:nth-child(1) > h4.boxSuccess:nth-of-type(3)') as HTMLElement),
+                text: "  Depois de me formar, fiz cursos de programação à distância, nos quais aprendi a trabalhar com tecnologias Front-End, incluindo HTML5, CSS3, JavaScript, VueJS, AngularJS e várias outras. Após me aprofundar no Front-End, comecei a estudar Back-End, especializando-me em linguagens como PHP, Laravel, Node, entre outras."
             },
-
         ];
         itemsAndEvents.forEach((element) => {
             element.domElement.classList.add('dNone');
         })
         var cont = 0;
-        const escreverTexto = (element: HTMLElement, texto: string, tempoCarregamento: number) => {
+        const writeText = (element: HTMLElement, text: string, timeLoading: number) => {
             element.classList.remove('dNone');
-            return this.escreverTextoHandle(element, texto, true, false, tempoCarregamento);
-
+            return this.writeTextHandle(element, text, true, false, timeLoading);
         }
-
         this.animateFinaly = true;
         while (cont < itemsAndEvents.length) {
-            escreverTexto(itemsAndEvents[cont].domElement, itemsAndEvents[cont].texto, 15).then();
+            writeText(itemsAndEvents[cont].domElement, itemsAndEvents[cont].text, 15).then();
             cont++;
         }
-
-
     }
 }
 
-
-
-
 </script>
-
 <style scoped>
 .dNone {
     display: none;
@@ -144,7 +129,6 @@ section.sobre h1.title {
     text-shadow: 0px 0px 0.1vw var(--corAmarelo), 0px 0px 0.2vw var(--corAmarelo), 0px 0px 0.3vw var(--corAmarelo);
 }
 
-
 h1.tag {
     font-size: 3vw;
     text-transform: lowercase;
@@ -166,14 +150,12 @@ h1 {
 
 div.w-50:nth-child(2)>p:nth-child(1) {
     font-size: 1vw;
-
     line-height: 150%;
-
     padding: 2%;
     font-weight: 600;
 }
 
-.boxVerde {
+.boxSuccess {
     background-color: var(--corVerde);
     box-shadow: 0px 0px 0.2vw var(--corVerde), 0px 0px 0.2vw var(--corVerde), 0px 0px 0.4vw var(--corVerde);
     border: 2px solid var(--corBranco);
@@ -181,7 +163,7 @@ div.w-50:nth-child(2)>p:nth-child(1) {
     text-shadow: 0px 0px 0.1vw black, 0px 0px 0.1vw black, 0px 0px 0.1vw black;
 }
 
-.boxVermelho {
+.boxDanger {
     background-color: var(--corVermelho);
     box-shadow: 0px 0px 0.2vw var(--corVermelho), 0px 0px 0.2vw var(--corVermelho), 0px 0px 0.4vw var(--corVermelho);
     border: 2px solid var(--corBranco);
@@ -203,16 +185,15 @@ div.__formacoes img {
     margin-right: 1%;
     /* object-position:0 5%; */
     border: 0.2vw solid var(--corPreto);
-
 }
 
 div.__formacoes h4 {
     width: 80%;
     text-shadow: 0px 0px 0.1vw var(--corPreto), 0px 0px 0.1vw var(--corPreto), 0px 0px 0.4vw var(--corPreto);
-
 }
 
 div.__formacoes p,
+
 h4 {
     font-size: 1vw;
 }
@@ -240,7 +221,6 @@ div.w-50:nth-child(1)>h1:nth-child(2) {
     padding: 1%;
     user-select: none;
     text-transform: uppercase;
-
 }
 
 div.w-50:nth-child(1)>h4:nth-child(3) {
@@ -254,22 +234,14 @@ div.w-50:nth-child(1)>h4:nth-child(3) b {
     font-weight: 300;
 }
 
-
-
 h1.tag:nth-child(3) {
     bottom: 0;
     right: 0;
 }
 
-
-
 div.textWrapper div {
     padding: 1% 1%;
 }
-
-
-
-
 
 section.sobre img.img__wrapperUser {
     background-color: var(--corBranco);
@@ -280,12 +252,10 @@ section.sobre img.img__wrapperUser {
     object-fit: fill;
 }
 
-
 @media (max-width:1500px) {
 
     div.flexRow.__formacoes {
         margin: 20px 0;
-
     }
 
     div.w-50:nth-child(2)>p:nth-child(1) {
@@ -322,11 +292,13 @@ section.sobre img.img__wrapperUser {
     }
 
     div.__formacoes h4,
+
     p {
         font-size: 22px;
     }
 
     div.__formacoes p,
+
     h4 {
         font-size: 20px;
     }
@@ -341,7 +313,7 @@ section.sobre img.img__wrapperUser {
         text-align: right;
     }
 
-    .boxVerde {
+    .boxSuccess {
         background-color: var(--corVerde);
         box-shadow: 0px 0px 15px var(--corVerde), 0px 0px 10px var(--corVerde), 0px 0px 4px var(--corVerde);
         border: 2px solid var(--corBranco);
@@ -349,7 +321,7 @@ section.sobre img.img__wrapperUser {
         text-shadow: 0px 0px 4px black, 0px 0px 2px black, 0px 0px 2px black;
     }
 
-    .boxVermelho {
+    .boxDanger {
         background-color: var(--corVermelho);
         box-shadow: 0px 0px 15px var(--corVermelho), 0px 0px 10px var(--corVermelho), 0px 0px 4px var(--corVermelho);
         border: 2px solid var(--corBranco);
@@ -372,12 +344,14 @@ section.sobre img.img__wrapperUser {
 }
 
 @media(max-width:1350px) {
+
     section.sobre img.img__wrapperUser {
         width: 100%;
     }
 }
 
 @media(max-width:800px) {
+
     div.textWrapper div.w-50 {
         width: 100%;
     }
@@ -388,11 +362,11 @@ section.sobre img.img__wrapperUser {
 }
 
 @media(max-width:600px) {
+
     section.sobre {
         width: 100%;
         position: relative;
         padding-top: 20%;
-
         /* padding: 20% 0; */
     }
 }

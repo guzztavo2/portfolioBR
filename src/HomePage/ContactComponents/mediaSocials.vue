@@ -89,12 +89,11 @@ h1>a {
     margin-top: 5%;
     padding: 0 2%;
     width: 100%;
-    color: var(--corPreto);
+    color: var(--corBranco);
     position: relative;
-    background-color: #0116273a;
+    background-color: #011627;
     border-radius: 10px;
     transition: ease-in-out 0.2s;
-
 }
 
 h1>a::after {
@@ -116,7 +115,7 @@ h1>a::before {
     left: 1.5%;
     content: "";
     display: block;
-    background-color: rgb(255, 0, 0);
+    background-color: var(--corAmarelo);
     width: 0%;
     height: 2px;
     transition: ease-in-out 0.5s;
@@ -127,9 +126,8 @@ h1>a:hover::before {
 }
 
 h1>a:hover {
-    color: var(--corBranco);
-
-    background-color: var(--corPreto);
+    color: var(--corAmarelo);
+    background-color: var(--corBranco);
 
 }
 

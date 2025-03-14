@@ -17,18 +17,18 @@ import { Vue, Options } from 'vue-class-component';
 @Options({
 
     props: {
-        escreverTexto: {
+        writeText: {
             type: Function,
             required: true
         },
-        deletarTexto: {
+        deleteText: {
             type: Function,
             required: true
         }
     },
     created() {
-        this.escreverTextoHandle = this.escreverTexto;
-        this.deletarTextoHandle = this.deletarTexto;
+        this.writeTextHandle = this.writeText;
+        this.deleteTextHandle = this.deleteText;
     },
     async mounted() {
         await this.writeMainTitle().then(() => {
@@ -39,9 +39,9 @@ import { Vue, Options } from 'vue-class-component';
 })
 export default class sectionMain extends Vue {
     // eslint-disable-next-line 
-    escreverTextoHandle: any;
+    writeTextHandle: any;
     // eslint-disable-next-line 
-    deletarTextoHandle: any;
+    deleteTextHandle: any;
     async writeMainTitle() {
         const objectAndValues: { object?: HTMLElement, value: string }[] = []
         const objects = document.querySelectorAll('div.titleWrapper h1.textWriter');
@@ -57,12 +57,12 @@ export default class sectionMain extends Vue {
                     sucess();
                     return;
                 }
-                await this.escreverTextoHandle(objectAndValues[cont].object, objectAndValues[cont].value, true, false, 50).then(async () => {
+                await this.writeTextHandle(objectAndValues[cont].object, objectAndValues[cont].value, true, false, 50).then(async () => {
                     if (cont == 1) {
                         if (objectAndValues[1].object !== undefined)
                             objectAndValues[1].object.innerHTML = objectAndValues[1].object.innerHTML + boldWriter_1?.outerHTML;
                         boldWriter_1 = (objectAndValues[1].object as HTMLElement).querySelector('b')
-                        await this.escreverTextoHandle(boldWriter_1, 'resultados ', false, false, 100).then();
+                        await this.writeTextHandle(boldWriter_1, 'resultados ', false, false, 100).then();
                     }
                     cont++;
                     writeNext();
@@ -93,8 +93,8 @@ export default class sectionMain extends Vue {
             else
                 h1Wrapper?.classList.remove(classAndValues[cont - 1].class);
             h1Wrapper?.classList.add(classAndValues[cont].class);
-            this.escreverTextoHandle(h1Wrapper, classAndValues[cont].value, true, false, 100).then(() => {
-                this.deletarTextoHandle(h1Wrapper, 100).then(() => {
+            this.writeTextHandle(h1Wrapper, classAndValues[cont].value, true, false, 100).then(() => {
+                this.deleteTextHandle(h1Wrapper, 100).then(() => {
                     cont++
                     writeAndDelete();
                 });

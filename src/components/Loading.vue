@@ -57,12 +57,12 @@ import { Options, Vue } from 'vue-class-component';
 
                 const writeNext = () => {
                     if (cont === elementsValues.length - 1) {
-                        this.$props.escreverTextoHandle(elementsValues[cont].element, elementsValues[cont].value, false, true).then(() => {
+                        this.$props.writeTextHandle(elementsValues[cont].element, elementsValues[cont].value, false, true).then(() => {
                             cont++;
                             success();
                         });
                     } else {
-                        this.$props.escreverTextoHandle(elementsValues[cont].element, elementsValues[cont].value, true, true).then(() => {
+                        this.$props.writeTextHandle(elementsValues[cont].element, elementsValues[cont].value, true, true).then(() => {
                             cont++;
                             writeNext();
                         });
@@ -87,7 +87,7 @@ import { Options, Vue } from 'vue-class-component';
         });
     },
     props: {
-        escreverTextoHandle: {
+        writeTextHandle: {
             type: Function,
             required: true
         }

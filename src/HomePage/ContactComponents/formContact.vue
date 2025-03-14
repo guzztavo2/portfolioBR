@@ -17,42 +17,42 @@
             a
             mim. Farei o possível para estabelecer uma comunicação o mais breve possível.</h1>
         <label for="nomeUsuario">
-            <p><i class="fa-solid fa-user"></i> Nome completo:</p>
+            <p><i class="fa-solid fa-user"></i> Nome completo: *</p>
             <input v-model="userInput.nomeUsuario" required @focusout="verificarNomeUsuario"
                 @keyup="verificarNomeUsuario" type="text" name="nomeUsuario" id="nomeUsuario"
-                placeholder="Digite aqui seu nome *">
+                placeholder="Digite aqui seu nome">
             <div v-if="userError.nomeUsuario.length > 0" class="error"><small v-html="userError.nomeUsuario"></small>
             </div>
         </label>
         <label for="emailUsuario">
-            <p><i class="fa-solid fa-at"></i> E-mail para a comunicação:</p>
+            <p><i class="fa-solid fa-at"></i> E-mail para a comunicação: *</p>
             <input v-model="userInput.emailUsuario" required @focusout="verificarEmailUsuario"
                 @keyup="verificarEmailUsuario" type="email" name="emailUsuario" id="emailUsuario"
-                placeholder="Digite aqui seu email *">
+                placeholder="Digite aqui seu email">
             <div v-if="userError.emailUsuario.length > 0" class="error"><small v-html="userError.emailUsuario"></small>
             </div>
         </label>
         <label for="numeroUsuario">
             <p><i class="fa-brands fa-whatsapp"></i> Digite seu WhatssApp (Opcional):</p>
             <input v-model="userInput.numeroUsuario" @focusout="verificarNumeroFocusOut" @keyup="verificarNumeroUsuario"
-                type="text" name="numeroUsuario" id="numeroUsuario" placeholder="Digite aqui seu número *">
+                type="text" name="numeroUsuario" id="numeroUsuario" placeholder="Digite aqui seu número">
             <div v-if="userError.numeroUsuario.length > 0" class="error"><small
                     v-html="userError.numeroUsuario"></small>
             </div>
 
         </label>
         <label for="mensagemUsuario">
-            <p><i class="fa-regular fa-message"></i> Digite a mensagem para ser enviada:</p>
+            <p><i class="fa-regular fa-message"></i> Digite a mensagem para ser enviada: *</p>
             <textarea v-model="userInput.mensagemUsuario" @focusout="verificarMensagemUsuario"
                 @keyup="verificarMensagemUsuario" name="mensagemUsuario" id="mensagemUsuario"
-                placeholder="Digite o motivo de sua mensagem *" cols="30" rows="5"></textarea>
+                placeholder="Digite o motivo de sua mensagem" cols="30" rows="5"></textarea>
             <div v-if="userError.mensagemUsuario.length > 0" class="error"><small
                     v-html="userError.mensagemUsuario"></small></div>
 
         </label>
         <div v-if="captchaObject.visibleCaptcha" class="captcha">
-            <VueClientRecaptcha @click="verificarClick($event)" :value="captchaObject.captchaValue" :show-capital-case-letters="false"
-                :show-lower-case-letters="false" @isValid="checkValidCaptcha" />
+            <VueClientRecaptcha @click="verificarClick($event)" :value="captchaObject.captchaValue"
+                :show-capital-case-letters="false" :show-lower-case-letters="false" @isValid="checkValidCaptcha" />
             <label for="">
                 <input type="text" placeholder="Escreva o captcha acima" v-model="captchaObject.captchaValue" />
                 <div class="error">
@@ -286,13 +286,13 @@ export default class FormComponent extends Vue {
             return '';
         }
     }
-    verificarClick(event:Event){
+    verificarClick(event: Event) {
         const element = (event.target as HTMLElement);
-      
-        if(element.classList.contains('vue_client_recaptcha_icon') || element.classList.contains('vue_client_recaptcha_icon_svg')){
-           this.captchaObject.captchaValue = '';
+
+        if (element.classList.contains('vue_client_recaptcha_icon') || element.classList.contains('vue_client_recaptcha_icon_svg')) {
+            this.captchaObject.captchaValue = '';
         }
-       
+
     }
     verificarNomeUsuario() {
         var userInput = this.userInput.nomeUsuario;
@@ -473,24 +473,23 @@ button {
     width: 100%;
     font-weight: 400;
     font-family: 'IBM Plex Sans';
+    transition: ease-in-out 0.2ms;
+    background-color: var(--corPreto);
+    color: white;
     transition: ease-in-out 0.2s;
 }
 
 form input:hover,
 form textarea:hover {
-    outline: 2px solid black;
+    background-color: var(--corBranco);
+    color: var(--corPreto);
 }
 
-form input:focus:hover,
-form textarea:focus:hover {
-    outline: 2px solid rgb(255, 255, 255);
-
-}
 
 form input:focus,
 form textarea:focus {
-    background-color: var(--corPreto);
-    color: white;
+    background-color: var(--corBranco);
+    color: var(--corPreto);
 
 }
 

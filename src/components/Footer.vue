@@ -25,13 +25,13 @@
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component';
 @Options({
-emits:['atualizarHeaderTitle'],
+emits:['updateHeaderTitle'],
 
 })
 export default class extends Vue {
 
     headerUpdate(headerLocation:string){
-        this.$emit('atualizarHeaderTitle', headerLocation)
+        this.$emit('updateHeaderTitle', headerLocation)
     }
 }
 
